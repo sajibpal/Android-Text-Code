@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3781be"
+    tools:context="com.example.sajibpal.fragment.Sajib">
+
+    <!-- TODO: Update blank fragment layout -->
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:gravity="center_horizontal"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           android:layout_width="190dp"
+           android:layout_height="180dp"
+           android:src="@drawable/sajib_duet"
+           android:scaleType="fitXY"/>
+       <TextView
+           android:textSize="15sp"
+           android:textStyle="bold"
+           android:layout_marginTop="8dp"
+           android:text="@string/no"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           />
+   </LinearLayout>
+</FrameLayout>

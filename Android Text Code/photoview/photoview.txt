@@ -1,0 +1,60 @@
+activity_main.xml*************
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.photoview.MainActivity">
+
+   <ImageView
+       android:id="@+id/image"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/sfds"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:scaleType="centerInside"/>
+
+</RelativeLayout>
+
+MainActivity.java ************
+
+package com.example.sajibpal.photoview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
+
+public class MainActivity extends AppCompatActivity {
+   ImageView img;
+   PhotoViewAttacher attacher;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        img= (ImageView) findViewById(R.id.image);
+        attacher=new PhotoViewAttacher(img);
+    }
+}
+
+
+build.gradle(module.app)**********
+
+ compile 'com.android.support:appcompat-v7:25.3.1'
+ compile 'com.github.chrisbanes:PhotoView:1.3.1'   *********
+
+
+build.gradle(Project.photoview)**********
+
+ 
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" } *******
+        jcenter()
+    }
+}

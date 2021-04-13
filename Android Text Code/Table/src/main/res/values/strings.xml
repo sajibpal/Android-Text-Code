@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Table</string>
+    <string-array name="name">
+       <item>sajib pal\n(12.16)</item>
+        <item>rajib pal</item>
+        <item>shajib pal\n(10.26)</item>
+        <item>sonsod pal</item>
+        <item>sabuj pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+        <item>sajib pal</item>
+    </string-array>
+    <string-array name="id">
+        <item>154045</item>
+        <item>154046</item>
+        <item>154047</item>
+        <item>154048</item>
+        <item>154049</item>
+        <item>154050</item>
+        <item>154040</item>
+        <item>154078</item>
+        <item>154047</item>
+        <item>154045</item>
+        <item>154046</item>
+        <item>154047</item>
+        <item>154045</item>
+        <item>154046</item>
+        <item>154047</item>
+        <item>154045</item>
+        <item>154046</item>
+        <item>154047</item>
+
+    </string-array>
+    <string-array name="dep">
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+        <item>CSE</item>
+
+    </string-array>
+</resources>

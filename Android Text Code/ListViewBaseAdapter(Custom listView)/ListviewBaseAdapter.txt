@@ -1,0 +1,206 @@
+activity_main.xml*****
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.listviewbaseadapter.MainActivity">
+
+     <ListView
+         android:id="@+id/list"
+         android:listSelector="#3caee2"
+         android:dividerHeight="1dp"
+         android:divider="#1e5cb3"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+     </ListView>
+
+
+</LinearLayout>
+
+
+
+MainActivity.java******
+
+
+
+package com.example.sajibpal.listviewbaseadapter;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView vlist;
+    String[] cname;
+    int[] flag={R.drawable.bd,R.drawable.nepal,R.drawable.india,R.drawable.pakistan,
+            R.drawable.butanflag,R.drawable.srilankaflag,R.drawable.auatrila};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        vlist=(ListView) findViewById(R.id.list);
+
+        cname=getResources().getStringArray(R.array.country);
+
+        CustomAdapter adapter=new CustomAdapter(this,cname,flag);
+        vlist.setAdapter(adapter);
+
+        vlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String value=cname[position];
+                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+
+country.xml ********
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+   <LinearLayout
+       android:weightSum="4"
+       android:layout_width="match_parent"
+       android:layout_height="50dp">
+
+       <ImageView
+           android:id="@+id/image"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:src="@drawable/bd"
+           android:scaleType="fitXY"
+           android:layout_height="wrap_content" />
+       <LinearLayout
+           android:layout_weight="3"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/text"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Bangladesh"
+               android:gravity="center_horizontal"
+               android:textSize="18sp"
+               android:layout_marginTop="5dp"
+               android:textStyle="bold"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Click to see Details"
+               android:gravity="center_horizontal"
+               android:textSize="12sp"
+               android:layout_marginTop="5dp"
+               android:textStyle="bold"/>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+</LinearLayout>
+
+
+CustomAdapter.java*********
+
+
+
+package com.example.sajibpal.listviewbaseadapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * Created by sajib pal on 9/7/2018.
+ */
+
+public class CustomAdapter extends BaseAdapter {
+
+    int[] flag1;
+    String[] countryname;
+    Context contex1;
+    LayoutInflater inflater;
+
+    CustomAdapter(Context contex,String[] cname, int[] flag){
+
+        this.contex1=contex;
+        this.countryname=cname;
+        this.flag1=flag;
+
+    }
+    @Override
+    public int getCount() {
+
+        return countryname.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if(convertView==null){
+
+            inflater=(LayoutInflater) contex1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView=inflater.inflate(R.layout.country,parent,false);
+        }
+       ImageView image1= (ImageView)convertView.findViewById(R.id.image);
+        TextView text1= (TextView) convertView.findViewById(R.id.text);
+
+        image1.setImageResource(flag1[position]);
+        text1.setText(countryname[position]);
+        return convertView;
+    }
+}
+
+string.xml*****
+
+
+<resources>
+    <string name="app_name">ListView</string>
+    <string-array name="country">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+      
+    </string-array>
+</resources>

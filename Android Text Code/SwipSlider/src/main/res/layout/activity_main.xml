@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.swipeslider.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tool"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#f4f1f1"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:text="Tab Page"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="#faf7f7"
+        android:id="@+id/tab"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        style="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </android.support.design.widget.TabLayout>
+
+   <android.support.v4.view.ViewPager
+       android:id="@+id/pager"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </android.support.v4.view.ViewPager>
+
+</LinearLayout>

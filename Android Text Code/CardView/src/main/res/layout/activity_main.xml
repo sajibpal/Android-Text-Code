@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3"
+    android:padding="3dp"
+    android:gravity="center"
+    android:background="@color/background"
+    tools:context="com.example.sajibpal.cardview.MainActivity">
+
+  <LinearLayout
+       android:gravity="center"
+       android:clipToPadding="false"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="0dp">
+
+      <android.support.v7.widget.CardView
+
+          android:foreground="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:layout_margin="2dp"
+          android:id="@+id/school"
+          android:layout_weight="0.5"
+          android:layout_width="0dp"
+          android:layout_height="match_parent">
+
+         <LinearLayout
+             android:orientation="vertical"
+             android:gravity="center"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+           <ImageView
+               android:background="@drawable/circulebackground"
+               android:padding="5dp"
+               android:src="@drawable/school"
+               android:layout_width="64dp"
+               android:layout_height="64dp" />
+             <View
+                 android:layout_width="match_parent"
+                 android:layout_height="1dp"
+                 android:layout_margin="3dp"
+                 android:background="@color/colorAccent"/>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="School"
+                 android:textSize="15sp"
+                 android:textStyle="bold"
+                 android:layout_marginTop="5dp"
+                 android:textAlignment="center"/>
+
+         </LinearLayout>
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+          android:foreground="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:layout_margin="2dp"
+          android:id="@+id/hospital"
+          android:layout_weight="0.5"
+          android:layout_width="0dp"
+          android:layout_height="match_parent">
+
+          <LinearLayout
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+              <ImageView
+                  android:background="@drawable/circlebackground1"
+                  android:padding="5dp"
+                  android:src="@drawable/ic_action_name"
+                  android:layout_width="64dp"
+                  android:layout_height="64dp" />
+              <View
+                  android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_margin="3dp"
+                  android:background="@color/colorPrimary"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Hospitial"
+                  android:textSize="15sp"
+                  android:textStyle="bold"
+                  android:layout_marginTop="5dp"
+                  android:textAlignment="center"/>
+
+          </LinearLayout>
+
+      </android.support.v7.widget.CardView>
+
+  </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_margin="2dp"
+            android:id="@+id/airport"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:background="@drawable/circulabackground2"
+                    android:padding="5dp"
+                    android:src="@drawable/atrport"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/green"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Airport"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_margin="2dp"
+            android:id="@+id/resturan"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:background="@drawable/circularbackground3"
+                    android:padding="5dp"
+                    android:src="@drawable/returent"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/blue"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Resturent"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_margin="2dp"
+            android:id="@+id/ol"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:background="@drawable/circulebackground"
+                    android:padding="5dp"
+                    android:src="@drawable/school"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/colorAccent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="School"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_margin="2dp"
+            android:id="@+id/tal"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:background="@drawable/circlebackground1"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_action_name"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/colorAccent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="School"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

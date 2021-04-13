@@ -1,0 +1,358 @@
+activity_main.xml  ********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.database.MainActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name :"/>
+
+       <EditText
+           android:id="@+id/text"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+            />
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age :"/>
+
+        <EditText
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender :"/>
+
+        <EditText
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id :"/>
+
+        <EditText
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="save"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="see"
+        android:text="show" />
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="update"
+        android:text="Update" />
+    <Button
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="delete"
+        android:text="Delete" />
+
+</LinearLayout>
+
+
+MainActivity.java *********
+
+ package com.example.sajibpal.database;
+
+import android.app.AlertDialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+    Connection connection;
+    EditText txt,txt1,txt2,txt3;
+    Button btn,btn1,btn2,btn3;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+     /*database connection code start*/
+        connection= new Connection(this);
+        SQLiteDatabase sqLiteDatabase=connection.getWritableDatabase();
+
+      /*database connection code end*/
+
+        txt= (EditText) findViewById(R.id.text);
+        txt1= (EditText) findViewById(R.id.text1);
+        txt2= (EditText) findViewById(R.id.text2);
+        txt3= (EditText) findViewById(R.id.text3);
+        btn= (Button) findViewById(R.id.button);
+        btn1= (Button) findViewById(R.id.button1);
+        btn2=(Button)findViewById(R.id.button2);
+        btn3=(Button)findViewById(R.id.button3);
+
+    }
+
+  //database add/save data
+
+    public  void save(View v){
+
+       String name=txt.getText().toString();
+       String age=txt1.getText().toString();
+       String gender=txt2.getText().toString();
+
+        if(v.getId()==R.id.button){
+
+            long rowid=connection.insetData(name,age,gender);
+
+          if(rowid==-1){
+
+              Toast.makeText(this, "Data not add Successfully", Toast.LENGTH_SHORT).show();
+          }
+          else {
+
+              Toast.makeText(this, "Data add Successfully", Toast.LENGTH_SHORT).show();
+          }
+        }
+    }
+
+  //database display data
+
+    public  void see(View v){
+
+       if(v.getId()==R.id.button1){
+
+         Cursor cursor=connection.displaydata();
+           if(cursor.getCount()==0){
+
+               showdata("Error","No data");
+               return;
+           }
+         StringBuffer buffer=new StringBuffer();
+
+         while (cursor.moveToNext()) {
+             buffer.append("Id : " + cursor.getString(0) + "\n");
+             buffer.append("Name : " + cursor.getString(1) + "\n");
+             buffer.append("Age : " + cursor.getString(2) + "\n");
+             buffer.append("Gender : " + cursor.getString(3) + "\n\n");
+         }
+        showdata("ResultSet",buffer.toString());
+       }
+    }
+   public  void showdata(String title,String data){
+
+       AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+       dialog.setTitle(title);
+       dialog.setMessage(data);
+       dialog.setCancelable(true);
+       dialog.show();
+   }
+
+  //database update data
+
+  public  void update(View v){
+      String name=txt.getText().toString();
+      String age=txt1.getText().toString();
+      String gender=txt2.getText().toString();
+      String id=txt3.getText().toString();
+
+     if(v.getId()==R.id.button2){
+
+        boolean isupdate=connection.updatedata(id,name,age,gender);
+
+        if(isupdate==true){
+
+            Toast.makeText(this, "Update  Successfully", Toast.LENGTH_SHORT).show();
+        }
+       else {
+
+            Toast.makeText(this, "Update not Successfully", Toast.LENGTH_SHORT).show();
+        }
+     }
+  }
+
+//database delete data
+
+  public  void delete(View j){
+
+      String id=txt3.getText().toString();
+
+     if(j.getId()==R.id.button3){
+
+        int val=connection.deletedata(id);
+         if (val > 0) {
+
+             Toast.makeText(this, "data delete Successfully", Toast.LENGTH_SHORT).show();
+         }
+         }
+        else {
+         Toast.makeText(this, "data delete not Successfully", Toast.LENGTH_SHORT).show();
+     }
+     }
+
+}
+
+
+Connection.java ***********
+
+package com.example.sajibpal.database;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+
+/**
+ * Created by sajib pal on 10/1/2018.
+ */
+
+public class Connection extends SQLiteOpenHelper {
+
+    private  static final String DATABASE_NAME="Find.db";
+    private  static final String TABLE_NAME="information";
+    private  static final  int VERSION_NUMBER=1;
+    private  static final String ID="_id";
+    private  static final String NAME="Name";
+    private  static final String AGE="Age";
+    private  static final String GENDER="Gender";
+    private  static  final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+ "("+ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+NAME+" VARCHAR(25),"+AGE+"  INTEGER,"+GENDER+" VARCHAR(25));";
+    private static  final  String DROP_TABLE="DROP TABLE IF EXISTS "+TABLE_NAME;
+    private  static final String SHOW_DATA="SELECT *FROM "+TABLE_NAME;
+    private Context context1;
+
+    /*database connection code start*/
+
+    public Connection(Context context) {
+        super(context, DATABASE_NAME, null, VERSION_NUMBER);
+        this.context1=context;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+      try{
+          db.execSQL(CREATE_TABLE);
+          Toast.makeText(context1, "Database is create", Toast.LENGTH_LONG).show();
+
+      }catch (Exception e){
+
+          Toast.makeText(context1, "Exception :"+e , Toast.LENGTH_LONG).show();
+      }
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+      try{
+
+          Toast.makeText(context1, "onUpdate is called :" , Toast.LENGTH_LONG).show();
+          db.execSQL(DROP_TABLE);
+          onCreate(db);
+
+      }
+      catch (Exception e){
+
+          Toast.makeText(context1, "Exception :"+e , Toast.LENGTH_LONG).show();
+      }
+
+    } /*database connection code end*/
+
+    //database add/insert function
+
+    public  long  insetData(String name,String age,String gender){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(NAME,name);
+        values.put(AGE,age);
+        values.put(GENDER,gender);
+       long rowid=data.insert(TABLE_NAME,null,values);
+
+      return rowid;
+    }
+    //database display function
+
+    public Cursor displaydata(){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+       Cursor cursor= data.rawQuery(SHOW_DATA,null);
+
+     return cursor;
+    }
+
+    //database update function
+
+    public boolean updatedata(String id,String name,String age,String gender){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(ID,id);
+        values.put(NAME,name);
+        values.put(AGE,age);
+        values.put(GENDER,gender);
+
+        data.update(TABLE_NAME,values,ID+" =?",new String[]{id});
+
+        return true;
+    }
+//database delete function
+    public  int deletedata(String id){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+       int value= data.delete(TABLE_NAME,ID+" =?",new String[]{id});
+       return  value;
+    }
+}
+

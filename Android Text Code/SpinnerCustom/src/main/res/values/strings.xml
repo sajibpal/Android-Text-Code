@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SpinnerCustom</string>
+    <string-array name="data">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+    </string-array>
+    <string-array name="pop">
+        <item>1.6 Million</item>
+        <item>1.4 Million</item>
+        <item>1.9 Million</item>
+        <item>1.0 Million</item>
+        <item>1.3 Million</item>
+        <item>1.7 Million</item>
+        <item>1.3 Million</item>
+    </string-array>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.googlemap.MapActivity">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mapframe"
+        tools:context=".MapsActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:id="@+id/relative"
+        android:background="@drawable/border_shape"
+        android:elevation="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/search"
+            android:src="@mipmap/search"/>
+
+          <AutoCompleteTextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_toRightOf="@+id/search"
+              android:layout_centerVertical="true"
+              android:textSize="15sp"
+              android:hint="Enter Location name"
+              android:background="@null"
+              android:id="@+id/editsearch"
+              android:textColor="#ac2525"
+              android:imeOptions="actionSearch"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/relative"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_info_outline_black_24dp"
+        android:id="@+id/map"
+        android:layout_marginTop="10dp"
+        />
+
+
+</RelativeLayout>

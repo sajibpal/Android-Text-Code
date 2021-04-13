@@ -1,0 +1,441 @@
+activity_main.xml **********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.example.sajibpal.authenticationfirebase.MainActivity">
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/email"
+       android:inputType="textEmailAddress"
+       android:hint="Email addres"
+       android:textColor="#be1313"
+       />
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/password"
+       android:inputType="textPassword"
+       android:hint="password"
+       android:textColor="#be1313"
+       />
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/login"
+       android:text="Login"
+       style="@style/Animation.AppCompat.Dialog"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/signup"
+       android:paddingTop="10dp"
+       android:textColor="@color/colorAccent"
+       android:text="Are you register ? Sign up"/>
+   <ProgressBar
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/progres"
+       android:visibility="gone"
+       android:layout_gravity="center"/>
+
+</LinearLayout>
+
+
+
+MainActivity.java(Login activity) ***********
+
+package com.example.sajibpal.authenticationfirebase;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView txt;
+    EditText  mail,pass;
+    Button btn;
+    ProgressBar progress;
+    private FirebaseAuth mAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        this.setTitle("Login Activity");
+
+        mail= (EditText) findViewById(R.id.email);
+        pass= (EditText) findViewById(R.id.password);
+        btn= (Button) findViewById(R.id.login);
+        txt= (TextView) findViewById(R.id.signup);
+        progress= (ProgressBar) findViewById(R.id.progres);
+
+        mAuth = FirebaseAuth.getInstance();
+        btn.setOnClickListener(this);
+        txt.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+       switch (v.getId()){
+
+           case R.id.login:
+                loginuser();
+               break;
+
+           case R.id.signup:
+               Intent intent=new Intent(getApplicationContext(),SignUp.class);
+               startActivity(intent);
+               break;
+       }
+    }
+
+    private void loginuser() {
+
+        String eamil=mail.getText().toString().trim();
+        String password=pass.getText().toString().trim();
+
+        if(eamil.isEmpty()){
+
+            mail.setError("Enter a email address");
+            mail.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(eamil).matches()){
+
+            mail.setError("Enter valid emaill");
+            mail.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+
+            pass.setError("Enter password ");
+            pass.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+
+            pass.setError("Mimimun five Lenght required password ");
+            pass.requestFocus();
+            return;
+        }
+
+       progress.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(eamil, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        progress.setVisibility(View.GONE);
+
+                        if (task.isSuccessful()) {
+                            finish();
+                            Intent intent=new Intent(MainActivity.this,Home.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Login unsuccessfully", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                });
+    }
+}
+
+
+activity_sign_up ************
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.authenticationfirebase.SignUp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email1"
+        android:inputType="textEmailAddress"
+        android:hint="Email addres"
+        android:textColor="#be1313"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password1"
+        android:inputType="textPassword"
+        android:hint="password"
+        android:textColor="#be1313"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:text="Sign in"
+        style="@style/Animation.AppCompat.Dialog"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup1"
+        android:paddingTop="10dp"
+        android:textColor="@color/colorAccent"
+        android:text="Are you register ? Sign in"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progresid"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+</LinearLayout>
+
+
+Sign_up.java *********
+
+ 
+package com.example.sajibpal.authenticationfirebase;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+
+public class SignUp extends AppCompatActivity implements View.OnClickListener{
+
+    TextView txt1;
+    EditText  mail1,pass1;
+    Button btn1;
+    ProgressBar progress;
+    private FirebaseAuth mAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up);
+        this.setTitle("Sing up Activity");
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mail1= (EditText) findViewById(R.id.email1);
+        pass1= (EditText) findViewById(R.id.password1);
+        btn1= (Button) findViewById(R.id.logout);
+        txt1= (TextView) findViewById(R.id.signup1);
+        progress= (ProgressBar) findViewById(R.id.progresid);
+
+        btn1.setOnClickListener(this);
+        txt1.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+            case R.id.logout:
+                register();
+                break;
+
+            case R.id.signup1:
+                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    private void register() {
+
+        String eamil=mail1.getText().toString().trim();
+        String password=pass1.getText().toString().trim();
+
+        if(eamil.isEmpty()){
+
+            mail1.setError("Enter a email address");
+            mail1.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(eamil).matches()){
+
+            mail1.setError("Enter valid emaill");
+            mail1.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+
+            pass1.setError("Enter password ");
+            pass1.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+
+            pass1.setError("Mimimun five Lenght required password ");
+            pass1.requestFocus();
+            return;
+        }
+        progress.setVisibility(View.VISIBLE);
+
+        mAuth.createUserWithEmailAndPassword(eamil, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        progress.setVisibility(View.GONE);
+
+                        if (task.isSuccessful()) {
+
+                            finish();
+                            Intent intent=new Intent(SignUp.this,MainActivity.class);
+                            startActivity(intent);
+
+                          //  Toast.makeText(SignUp.this, "Successfull", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+
+                                Toast.makeText(SignUp.this, "User is already Registered", Toast.LENGTH_SHORT).show();
+                            } else {
+
+                                Toast.makeText(SignUp.this, "Error :" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+    }
+}
+
+
+
+activity_home.xml************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.authenticationfirebase.Home">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi sajib"/>
+
+</LinearLayout>
+
+
+Home.java (profile activity)************
+
+package com.example.sajibpal.authenticationfirebase;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+public class Home extends AppCompatActivity {
+
+    FirebaseAuth mauth;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        mauth=FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.logout,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+         if(item.getItemId()==R.id.out){
+
+             FirebaseAuth.getInstance().signOut();
+             finish();
+             Intent intent=new Intent(Home.this,MainActivity.class);
+             startActivity(intent);
+         }
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+
+logout.xml(menu xml for menu option) *********
+
+ <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Signout"
+        android:id="@+id/out">
+
+    </item>
+
+</menu>
+
+
+build(app gardle)***********
+
+
+ dependencies {
+  
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.google.firebase:firebase-auth:11.0.4'
+   
+}
+
+
+apply plugin: 'com.google.gms.google-services'
+
+
+
+
+ 

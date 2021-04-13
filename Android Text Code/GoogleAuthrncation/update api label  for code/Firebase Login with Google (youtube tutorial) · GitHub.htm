@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com/">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-67V2J9Se2CifJlftk9/cExHGvxd7N9b9EdGnQEpszu99Ogeecilu9jIDxoCkx3zNLfB9ArraXW0J03qyVmN0Uw==" rel="stylesheet" href="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/frameworks-e7318add1f7e055d040edb0f75aaa0ba.css">
+  <link crossorigin="anonymous" media="all" integrity="sha512-MRlTIqIyb8caK5+o8llXVntXovciHyAM4qE3kWU2S7SIjAPDxYp4mE0jQp4kP5UYegy+lG9y1I6VlsdzEjb5Qw==" rel="stylesheet" href="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/site-294181adec18ed639e160b96b45d17ac.css">
+    <link crossorigin="anonymous" media="all" integrity="sha512-SQfcEl9nUqp5Pg0HyMjk1n04IouLoqRYwiaEvmOpaiFCuXn0II0PIyYGciCTKFmYziPiAmQCoKdA0dL5aC6Ydg==" rel="stylesheet" href="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/github-c620904be558ec28350a4df105347d9f.css">
+    
+    
+    
+    
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Firebase Login with Google (youtube tutorial) · GitHub</title>
+    <meta name="description" content="Firebase Login with Google (youtube tutorial). GitHub Gist: instantly share code, notes, and snippets.">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://gist.github.com/opensearch-gist.xml" title="Gist">
+  <link rel="fluid-icon" href="https://gist.github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    <meta name="twitter:image:src" content="https://avatars3.githubusercontent.com/u/16528528?s=400&amp;v=4"><meta name="twitter:site" content="@github"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Firebase Login with Google (youtube tutorial)"><meta name="twitter:description" content="Firebase Login with Google (youtube tutorial). GitHub Gist: instantly share code, notes, and snippets.">
+    <meta property="og:image" content="https://avatars3.githubusercontent.com/u/16528528?s=400&amp;v=4"><meta property="og:site_name" content="Gist"><meta property="og:type" content="article"><meta property="og:title" content="Firebase Login with Google (youtube tutorial)"><meta property="og:url" content="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3"><meta property="og:description" content="Firebase Login with Google (youtube tutorial). GitHub Gist: instantly share code, notes, and snippets."><meta property="article:author" content="262588213843476"><meta property="article:publisher" content="262588213843476">
+
+  <link rel="assets" href="https://github.githubassets.com/">
+  
+  <meta name="pjax-timeout" content="1000">
+  
+  <meta name="request-id" content="D243:5011:E6D43:13EA51:5D15A3EE" data-pjax-transient="">
+
+
+  
+
+  <meta name="selected-link" value="gist_code" data-pjax-transient="">
+
+      <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+
+  <meta name="octolytics-host" content="collector.githubapp.com"><meta name="octolytics-app-id" content="gist"><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event"><meta name="octolytics-dimension-request_id" content="D243:5011:E6D43:13EA51:5D15A3EE"><meta name="octolytics-dimension-region_edge" content="sea"><meta name="octolytics-dimension-region_render" content="iad">
+<meta name="analytics-location" content="/&lt;user-name&gt;/&lt;gist-id&gt;" data-pjax-transient="true">
+
+
+
+
+
+<meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+
+    <meta name="octolytics-dimension-public" content="true"><meta name="octolytics-dimension-gist_id" content="93481189"><meta name="octolytics-dimension-gist_name" content="f0fd16bc0e7d9992dff9911f4ea622c3"><meta name="octolytics-dimension-anonymous" content="false"><meta name="octolytics-dimension-owner_id" content="16528528"><meta name="octolytics-dimension-owner_login" content="haerulmuttaqin"><meta name="octolytics-dimension-forked" content="false">
+
+  <meta class="js-ga-set" name="dimension5" content="public">
+  <meta class="js-ga-set" name="dimension6" content="owned">
+  <meta class="js-ga-set" name="dimension7" content="java xml">
+
+
+      <meta name="hostname" content="gist.github.com">
+    <meta name="user-login" content="">
+
+      <meta name="expected-hostname" content="gist.github.com">
+    <meta name="js-proxy-site-detection-payload" content="NDM4YWRmYzYxZjVhZTk1ZDY1Y2ZmYmJmYzc1MGE4MTU2NjAzOGFmM2RhMTE1MTIzMjRiNzljMDVjMDA1Y2VhM3x7InJlbW90ZV9hZGRyZXNzIjoiMTAzLjEyMC4yMDMuMTkwIiwicmVxdWVzdF9pZCI6IkQyNDM6NTAxMTpFNkQ0MzoxM0VBNTE6NUQxNUEzRUUiLCJ0aW1lc3RhbXAiOjE1NjE2OTkzMTEsImhvc3QiOiJnaXRodWIuY29tIn0=">
+
+    <meta name="enabled-features" content="MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PULL_PANDA_HOMEPAGE,DISPLAY_COMMENTER_FULL_NAME">
+
+  <meta name="html-safe-nonce" content="d73eeced99c04f832e3d29585ae2b3c2c94da7b7">
+
+  <meta http-equiv="x-pjax-version" content="c8d2ffd63b84ec426355c677c382c228">
+  
+
+      <link href="https://gist.github.com/haerulmuttaqin.atom" rel="alternate" title="atom" type="application/atom+xml">
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-wx/pel4W5UaeP3bMsNTBXC+VO0PCxJthIGK0+wxdgcJm12Zy2fEs8iemaXo4QxllBE76meoHujyQyeM8gG/d+w==" rel="stylesheet" href="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/gist-ce018e566da363f8262d7af4f6e8b7f3.css">
+
+
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+
+
+
+
+  </head>
+
+  <body class="logged-out env-production min-width-lg">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+        <div class="Header" role="banner">
+  <div class="Header-item">
+    <a class="Header-link" data-hotkey="g d" aria-label="Gist Homepage" href="https://gist.github.com/">
+  <svg class="octicon octicon-mark-github v-align-middle d-none" height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+  <svg height="24" class="octicon octicon-logo-github v-align-middle" viewBox="0 0 45 16" version="1.1" width="67" aria-hidden="true"><path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 0 0-.146-.18zM42.23 9.84c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61h-2.1c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path></svg>
+  <svg height="24" class="octicon octicon-logo-gist v-align-middle" viewBox="0 0 25 16" version="1.1" width="37" aria-hidden="true"><path fill-rule="evenodd" d="M4.7 8.73h2.45v4.02c-.55.27-1.64.34-2.53.34-2.56 0-3.47-2.2-3.47-5.05 0-2.85.91-5.06 3.48-5.06 1.28 0 2.06.23 3.28.73V2.66C7.27 2.33 6.25 2 4.63 2 1.13 2 0 4.69 0 8.03c0 3.34 1.11 6.03 4.63 6.03 1.64 0 2.81-.27 3.59-.64V7.73H4.7v1zm6.39 3.72V6.06h-1.05v6.28c0 1.25.58 1.72 1.72 1.72v-.89c-.48 0-.67-.16-.67-.7v-.02zm.25-8.72c0-.44-.33-.78-.78-.78s-.77.34-.77.78.33.78.77.78.78-.34.78-.78zm4.34 5.69c-1.5-.13-1.78-.48-1.78-1.17 0-.77.33-1.34 1.88-1.34 1.05 0 1.66.16 2.27.36v-.94c-.69-.3-1.52-.39-2.25-.39-2.2 0-2.92 1.2-2.92 2.31 0 1.08.47 1.88 2.73 2.08 1.55.13 1.77.63 1.77 1.34 0 .73-.44 1.42-2.06 1.42-1.11 0-1.86-.19-2.33-.36v.94c.5.2 1.58.39 2.33.39 2.38 0 3.14-1.2 3.14-2.41 0-1.28-.53-2.03-2.75-2.23h-.03zm8.58-2.47v-.86h-2.42v-2.5l-1.08.31v2.11l-1.56.44v.48h1.56v5c0 1.53 1.19 2.13 2.5 2.13.19 0 .52-.02.69-.05v-.89c-.19.03-.41.03-.61.03-.97 0-1.5-.39-1.5-1.34V6.94h2.42v.02-.01z"></path></svg>
+</a>
+  </div>
+
+
+  <div class="Header-item Header-item--full js-site-search">
+      <div class="header-search mr-3">
+
+<!-- '"` --><!-- </textarea></xmp> --><form class="position-relative js-quicksearch-form" role="search" aria-label="Site" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+  <div class="header-search-wrapper form-control input-sm js-chromeless-input-container">
+    <input type="text" class="form-control input-sm js-site-search-focus header-search-input" data-hotkey="s,/" name="q" aria-label="Search" placeholder="Search…" autocorrect="off" autocomplete="off" autocapitalize="off">
+  </div>
+
+</form></div>
+
+
+    <nav aria-label="Global" class="d-flex">
+  <a class="Header-link mr-3" data-ga-click="Header, go to all gists, text:all gists" href="https://gist.github.com/discover">All gists</a>
+
+  <a class="Header-link mr-3" data-ga-click="Header, go to GitHub, text:Back to GitHub" href="https://github.com/">Back to GitHub</a>
+
+
+
+</nav>
+
+  </div>
+
+
+
+
+    <div class="Header-item f4 mr-0" role="navigation">
+      <a class="HeaderMenu-link no-underline mr-3" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="b5de832ddb6eada1253b13dd6e8dddf6eb5191b81e524b7118b4fa2f5daa0b6a" data-ga-click="Header, sign in" href="https://gist.github.com/auth/github?return_to=https%3A%2F%2Fgist.github.com%2Fhaerulmuttaqin%2Ff0fd16bc0e7d9992dff9911f4ea622c3">
+        Sign&nbsp;in
+</a>        <a class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="f3e318deedaeff764e7980eec276c9b9abf8e892fac8ae489d520a8c48356f49" data-ga-click="Header, sign up" href="https://gist.github.com/join?source=header-gist">
+          Sign&nbsp;up
+</a>    </div>
+</div>
+
+
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+    <div id="js-flash-container">
+
+</div>
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled="">
+        <div itemscope="" itemtype="http://schema.org/Code">
+    <main id="gist-pjax-container" class="gist-content-wrapper" data-pjax-container="">
+      
+
+
+  <div class="gist-detail-intro gist-banner">
+    <div class="container-lg px-3">
+      <p class="lead">
+        Instantly share code, notes, and snippets.
+      </p>
+    </div>
+  </div>
+
+
+<div class="gisthead pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-3 mb-4">
+  <div class="container-lg px-3">
+    
+  
+
+
+<div class="mb-3 d-flex">
+  <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+    <a class="avatar mr-1" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=16528528" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://gist.github.com/haerulmuttaqin"><img src="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/16528528.png" alt="@haerulmuttaqin" width="26" height="26"></a>
+    <span class="author"><a data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=16528528" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://gist.github.com/haerulmuttaqin">haerulmuttaqin</a></span><!--
+        --><span class="path-divider">/</span><!--
+        --><strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3">MainActivity.java</a></strong>
+
+    <div class="d-block text-small text-gray">
+      Last active <time-ago datetime="2019-05-09T21:14:44Z" title="May 10, 2019, 3:14 AM GMT+6">2 months ago</time-ago>
+    </div>
+  </h1>
+
+  <ul class="pagehead-actions float-none">
+
+
+
+    <li>
+        <a class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to star a gist" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist star button&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2914e39dbba55a0d714aedcf16e8f01d6def675c1e706c39d06136497e6918fd" href="https://gist.github.com/login?return_to=https%3A%2F%2Fgist.github.com%2Fhaerulmuttaqin%2Ff0fd16bc0e7d9992dff9911f4ea622c3">
+    <svg class="octicon octicon-star" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
+    Star
+</a>
+  <a class="social-count" aria-label="1 user starred this gist" href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/stargazers">
+    1
+</a>
+    </li>
+
+      <li>
+          <a class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to fork a gist" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;gist fork button&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="1c0d068047a75310a51b974af1672244b0c9e6cd5ccba731db3c10ba8f677685" href="https://gist.github.com/login?return_to=https%3A%2F%2Fgist.github.com%2Fhaerulmuttaqin%2Ff0fd16bc0e7d9992dff9911f4ea622c3">
+    <svg class="octicon octicon-repo-forked" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    Fork
+</a>    <span class="social-count">0</span>
+
+      </li>
+  </ul>
+
+</div>
+
+<div class="d-flex">
+  <div class="flex-auto">
+    <nav class="reponav js-repo-nav js-sidenav-container-pjax" aria-label="Gist" data-pjax="#gist-pjax-container">
+
+  <a class="js-selected-navigation-item selected reponav-item" data-pjax="true" data-hotkey="g c" aria-current="page" data-selected-links="gist_code /haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3" href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3">
+    <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+    Code
+</a>
+    <a class="js-selected-navigation-item reponav-item" data-pjax="true" data-hotkey="g r" data-selected-links="gist_revisions /haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/revisions" href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/revisions">
+      <svg class="octicon octicon-git-commit" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z"></path></svg>
+      Revisions
+      <span class="Counter">2</span>
+</a>
+    <a class="js-selected-navigation-item reponav-item" data-pjax="true" data-hotkey="g s" data-selected-links="gist_stars /haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/stargazers" href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/stargazers">
+      <svg class="octicon octicon-star" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
+      Stars
+      <span class="Counter">1</span>
+</a>
+</nav>
+
+  </div>
+
+  <div class="file-navigation-options" data-multiple="">
+
+    <div class="file-navigation-option v-align-middle">
+
+  <div class="input-group">
+    <div class="input-group-button">
+      <details class="details-reset details-overlay select-menu">
+        <summary class="btn btn-sm select-menu-button" data-ga-click="Repository, clone Embed, location:repo overview" aria-haspopup="menu">
+          <span data-menu-button="">Embed</span>
+        </summary>
+        <details-menu class="select-menu-modal position-absolute" data-menu-input="gist-share-url" style="z-index: 99;" aria-label="Clone options" role="menu">
+          <div class="select-menu-header">
+            <span class="select-menu-title">What would you like to do?</span>
+          </div>
+          <div class="select-menu-list">
+              <button name="button" type="button" class="select-menu-item width-full" aria-checked="true" role="menuitemradio" value="&lt;script src=&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3.js&quot;&gt;&lt;/script&gt;" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;EMBED&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d3cf4cfb5ffc4b516d5152fa9f910b4b34042e9a256b16bc2fa0c947b2ad40ac">
+                <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                <div class="select-menu-item-text">
+                  <span class="select-menu-item-heading" data-menu-button-text="">
+                    
+                    Embed
+                  </span>
+                    <span class="description">
+                      Embed this gist in your website.
+                    </span>
+                </div>
+</button>              <button name="button" type="button" class="select-menu-item width-full" aria-checked="false" role="menuitemradio" value="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;SHARE&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="b424a6a60932788be0458ad5b8eba1359b9553fde264c019b97c79fa55aba08b">
+                <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                <div class="select-menu-item-text">
+                  <span class="select-menu-item-heading" data-menu-button-text="">
+                    
+                    Share
+                  </span>
+                    <span class="description">
+                      Copy sharable link for this gist.
+                    </span>
+                </div>
+</button>              <button name="button" type="button" class="select-menu-item width-full" aria-checked="false" role="menuitemradio" value="https://gist.github.com/f0fd16bc0e7d9992dff9911f4ea622c3.git" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_HTTPS&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="cdeafe86b3ce7e473493e5f82a55e98c74bfe2b5c385837eb2d5413c5dda6962">
+                <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                <div class="select-menu-item-text">
+                  <span class="select-menu-item-heading" data-menu-button-text="">
+                    Clone via
+                    HTTPS
+                  </span>
+                    <span class="description">
+                      Clone with Git or checkout with SVN using the repository’s web address.
+                    </span>
+                </div>
+</button>          </div>
+          <div class="select-menu-list">
+            <a role="menuitem" class="select-menu-item select-menu-action" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+              <svg class="octicon octicon-question select-menu-item-icon" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+              <div class="select-menu-item-text">
+                Learn more about clone URLs
+              </div>
+            </a>
+          </div>
+        </details-menu>
+      </details>
+    </div>
+
+    <input id="gist-share-url" type="text" data-autoselect="" class="form-control input-monospace input-sm" value="&lt;script src=&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3.js&quot;&gt;&lt;/script&gt;" aria-label="Clone this repository at &lt;script src=&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3.js&quot;&gt;&lt;/script&gt;" readonly="readonly">
+
+    <div class="input-group-button">
+      <clipboard-copy for="gist-share-url" aria-label="Copy to clipboard" class="btn btn-sm zeroclipboard-button" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="c864f25e8156a21eb87959dbcae8152b6a3c78775e2bc4925a7a8def4a1a70c4" tabindex="0" role="button"><svg class="octicon octicon-clippy" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"></path></svg></clipboard-copy>
+    </div>
+  </div>
+</div>
+
+
+    <div class="file-navigation-option">
+    <a class="btn btn-sm tooltipped tooltipped-s tooltipped-multiline" aria-label="Save haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3 to your computer and use it in GitHub Desktop." data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;OPEN_IN_DESKTOP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2cfa9b6309c21190a507a4f2917842e16950105a02457aa59d755f94a750daff" href="https://desktop.github.com/"><svg class="octicon octicon-desktop-download" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 6h3V0h2v6h3l-4 4-4-4zm11-4h-4v1h4v8H1V3h4V2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1z"></path></svg></a>
+</div>
+
+
+    <div class="file-navigation-option">
+      <a class="btn btn-sm" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;DOWNLOAD_ZIP&quot;,&quot;git_repository_type&quot;:&quot;GIST&quot;,&quot;gist_id&quot;:93481189,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="42fdeb8bdd27c29be4dd850e89d22093828a87b66e87f008e0dd45bce154b6b6" data-ga-click="Gist, download zip, location:gist overview" href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/archive/2a7282c98c2975c030c5278a9e8648344c6407e0.zip">Download ZIP</a>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="container-lg px-3 new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content gist-content">
+    
+  <div>
+      <div itemprop="about">
+    Firebase Login with Google (youtube tutorial)
+  </div>
+
+
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-ic_firebase_logo-xml" class="file">
+      <div class="file-header">
+        <div class="file-actions">
+
+          <a class="btn btn-sm " href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/raw/2a7282c98c2975c030c5278a9e8648344c6407e0/ic_firebase_logo.xml">Raw</a>
+        </div>
+        <div class="file-info">
+          <span class="icon">
+            <svg class="octicon octicon-gist" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg>
+          </span>
+          <a class="css-truncate" href="#file-ic_firebase_logo-xml">
+            <strong class="user-select-contain gist-blob-name css-truncate-target">
+              ic_firebase_logo.xml
+            </strong>
+          </a>
+        </div>
+      </div>
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-xml ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-ic_firebase_logo-xml-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-ic_firebase_logo-xml-LC1" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">vector</span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-ic_firebase_logo-xml-LC2" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>124dp<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-ic_firebase_logo-xml-LC3" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">viewportHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>180<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-ic_firebase_logo-xml-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">viewportWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>180<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-ic_firebase_logo-xml-LC5" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>124dp<span class="pl-pds">"</span></span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-ic_firebase_logo-xml-LC6" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ff9900<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-ic_firebase_logo-xml-LC7" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-ic_firebase_logo-xml-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>m35.239,132.063c0.261,-1.888 0.806,-5.14 1.212,-7.227 0.406,-2.087 1.442,-8.437 2.303,-14.11 1.789,-11.793 3.832,-24.985 6.088,-39.298 3.112,-19.749 4.336,-27.603 5.524,-35.466 1.205,-7.972 3.236,-20.083 4.221,-25.169 0.413,-2.132 0.912,-2.716 2.476,-2.9 2.313,-0.272 2.461,-0.072 9.153,12.356 2.671,4.96 5.728,10.61 6.793,12.556 1.066,1.946 3.38,6.252 5.143,9.568l3.206,6.029 -4.867,9.225c-28.82,54.634 -40.436,76.466 -41.025,77.107 -0.431,0.468 -0.519,-0.564 -0.228,-2.67z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-ic_firebase_logo-xml-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-ic_firebase_logo-xml-LC10" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>20.3085556<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-ic_firebase_logo-xml-LC11" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ff6600<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-ic_firebase_logo-xml-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-ic_firebase_logo-xml-LC13" class="blob-code blob-code-inner js-file-line">
+        android:pathData="m35.239,134.063c0.001,-0.198 4.205,-8.269 
+9.343,-17.937 5.138,-9.668 15.348,-28.968 22.689,-42.89 11.182,-21.206 
+13.614,-25.314 14.988,-25.324 1.681,-0.013 2.625,1.258 7.356,9.903 
+1.263,2.307 2.861,5.053 3.551,6.102 0.691,1.049 1.665,2.861 2.166,4.027 
+0.501,1.166 1.584,2.369 2.408,2.674 1.382,0.511 1.27,0.808 -1.455,3.849 
+-1.624,1.812 -3.153,3.269 -3.398,3.237 -0.245,-0.032 -0.523,0.2 
+-0.616,0.514 -0.374,1.253 -2.611,3.421 -4.621,4.478 -1.167,0.614 
+-1.935,1.42 -1.705,1.792 0.23,0.371 -0.279,0.896 -1.13,1.166 -0.851,0.27
+ -1.383,0.758 -1.181,1.084 0.338,0.547 -2.663,3.617 -3.97,4.061 
+-0.313,0.106 -0.517,0.365 -0.452,0.575 0.136,0.442 -2.174,2.669 
+-2.768,2.669 -0.22,0 -0.347,0.172 -0.282,0.381 0.139,0.449 -1.391,1.927 
+-2.215,2.14 -0.315,0.081 -0.565,0.327 -0.555,0.545 0.032,0.773 
+-3.64,4.326 -5.438,5.262 -1.003,0.522 -1.771,1.264 -1.706,1.65 
+0.119,0.706 -1.656,2.653 -2.391,2.623 -0.218,-0.009 -0.375,0.199 
+-0.348,0.462 0.026,0.263 -0.746,0.874 -1.716,1.357 -0.97,0.484 
+-1.769,1.213 -1.776,1.62 -0.019,1.215 -1.194,2.699 -1.827,2.308 
+-0.652,-0.403 -5.272,4.088 -5.448,5.297 -0.061,0.419 -0.368,0.694 
+-0.681,0.611 -0.652,-0.174 -6.063,5.195 -6.111,6.063 -0.017,0.315 
+-0.289,0.581 -0.603,0.592 -0.315,0.011 -2.717,2.146 -5.339,4.745 
+-2.622,2.599 -4.766,4.563 -4.765,4.365z"</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-ic_firebase_logo-xml-LC14" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-ic_firebase_logo-xml-LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>20.3085556<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-ic_firebase_logo-xml-LC16" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ff9900<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-ic_firebase_logo-xml-LC17" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-ic_firebase_logo-xml-LC18" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>m96.241,70.382c-0.514,-0.62 -3.401,-5.478 -6.414,-10.795 -4.622,-8.157 -6.151,-10.166 -8.698,-11.433 -0.456,-0.227 7.666,-15.462 8.702,-16.322 2.739,-2.273 3.908,-0.702 14.118,18.984 5.448,10.505 5.908,11.706 4.353,11.383 -0.505,-0.105 -0.934,0.21 -0.953,0.699 -0.045,1.153 -1.069,2.161 -2.196,2.161 -0.489,0 -0.895,0.343 -0.902,0.763 -0.021,1.346 -1.215,2.709 -1.967,2.244 -0.401,-0.248 -0.635,0.004 -0.519,0.56 0.115,0.556 -0.219,0.924 -0.744,0.819 -0.524,-0.105 -0.868,0.191 -0.763,0.658 0.296,1.317 -2.968,1.543 -4.018,0.279z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-ic_firebase_logo-xml-LC19" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-ic_firebase_logo-xml-LC20" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>20.3085556<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-ic_firebase_logo-xml-LC21" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ffcc00<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-ic_firebase_logo-xml-LC22" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-ic_firebase_logo-xml-LC23" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>m85.958,162.87c-2.517,-1.396 -6.464,-3.605 -8.771,-4.908 -8.442,-4.768 -25.007,-14.063 -33.361,-18.718 -4.715,-2.628 -8.576,-5.092 -8.581,-5.477 -0.004,-0.385 0.152,-0.539 0.349,-0.343 0.196,0.196 22.244,-21.541 48.996,-48.305C131.963,37.725 135.415,34.561 136.985,37.1c0.624,1.01 4.82,26.009 9.514,56.692 0.813,5.316 1.669,10.292 1.902,11.059 0.233,0.767 1.129,6.028 1.991,11.691 0.862,5.663 1.851,11.929 2.196,13.924 0.593,3.42 0.516,3.686 -1.349,4.653 -4.569,2.37 -44.298,24.529 -48.464,27.031 -6.507,3.908 -10.747,4.089 -16.818,0.721z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-ic_firebase_logo-xml-LC24" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-ic_firebase_logo-xml-LC25" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>20.3085556<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_firebase_logo-xml-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-ic_firebase_logo-xml-LC26" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">vector</span>&gt;</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-ic_google_logo-xml" class="file">
+      <div class="file-header">
+        <div class="file-actions">
+
+          <a class="btn btn-sm " href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/raw/2a7282c98c2975c030c5278a9e8648344c6407e0/ic_google_logo.xml">Raw</a>
+        </div>
+        <div class="file-info">
+          <span class="icon">
+            <svg class="octicon octicon-gist" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg>
+          </span>
+          <a class="css-truncate" href="#file-ic_google_logo-xml">
+            <strong class="user-select-contain gist-blob-name css-truncate-target">
+              ic_google_logo.xml
+            </strong>
+          </a>
+        </div>
+      </div>
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-xml ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-ic_google_logo-xml-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-ic_google_logo-xml-LC1" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">vector</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>42dp<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-ic_google_logo-xml-LC2" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">viewportHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>500<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-ic_google_logo-xml-LC3" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">viewportWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>500<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-ic_google_logo-xml-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>42dp<span class="pl-pds">"</span></span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-ic_google_logo-xml-LC5" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ffcc00<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-ic_google_logo-xml-LC6" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-ic_google_logo-xml-LC7" class="blob-code blob-code-inner js-file-line">
+        android:pathData="m133.685,346.193c-0.083,-0.881 -0.083,-2.033 
+0,-2.561 0.083,-0.528 -0.377,-0.961 -1.023,-0.961 -1.602,0 
+-9.774,-24.912 -12.813,-39.062 -3.396,-15.812 -4.365,-34.074 
+-2.836,-53.461 1.262,-15.998 7.217,-44.513 9.296,-44.513 0.574,0 
+0.712,-0.864 0.307,-1.921 -0.405,-1.057 -0.065,-1.921 0.756,-1.921 
+0.821,0 1.178,-0.51 0.793,-1.134 -1.008,-1.631 1.824,-9.112 3.45,-9.112 
+0.753,0 1.008,-0.361 0.566,-0.803 -0.442,-0.442 0.075,-2.5 
+1.147,-4.573l1.95,-3.771 4.723,3.458c2.598,1.902 5.796,4.681 7.108,6.174
+ 1.312,1.494 2.508,2.428 2.657,2.076 0.414,-0.975 31.457,23.184 
+31.457,24.481 0,0.623 0.432,0.996 0.961,0.828 1.656,-0.526 15.689,10.768
+ 15.689,12.625 0,0.972 -0.432,1.768 -0.961,1.77 -0.528,0.001 
+-1.108,2.062 -1.288,4.58 -0.18,2.517 -0.828,5.542 -1.439,6.721 
+-1.696,3.27 -0.945,35.45 1.088,46.595l1.8,9.872 
+-3.738,2.935c-2.056,1.614 -4.181,2.791 -4.723,2.615 -0.542,-0.176 
+-0.985,0.187 -0.985,0.807 0,1.398 -13.481,11.68 -15.314,11.68 -0.735,0 
+-1.336,0.501 -1.336,1.113 0,1.703 -23.159,18.798 -24.807,18.312 
+-0.796,-0.235 -1.026,-0.008 -0.512,0.509 1.062,1.062 -7.769,8.153 
+-10.221,8.207 -0.881,0.021 -1.669,-0.685 -1.753,-1.565z"</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-ic_google_logo-xml-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-ic_google_logo-xml-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>34.1012001<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-ic_google_logo-xml-LC10" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#cc0000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-ic_google_logo-xml-LC11" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-ic_google_logo-xml-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>m188.908,225.867c-4.579,-3.517 -12.647,-9.649 -17.93,-13.627 -5.283,-3.978 -9.893,-7.538 -10.246,-7.911 -0.352,-0.373 -6.259,-4.925 -13.127,-10.116 -6.868,-5.19 -12.487,-10.014 -12.487,-10.718 0,-1.725 12.219,-22.052 17.101,-28.448 19.924,-26.103 44.636,-46.32 72.231,-59.092 17.565,-8.13 16.497,-7.708 28.494,-11.255 25.393,-7.508 61.536,-9.635 87.851,-5.17 20.317,3.447 51.647,14.917 64.519,23.62 1.78,1.204 5.828,3.863 8.994,5.911 8.01,5.178 20.497,14.64 20.497,15.532 0,1.877 -55.363,55.76 -56.126,54.625 -0.476,-0.708 -3.459,-3.045 -6.629,-5.193 -49.693,-33.675 -120.59,-21.735 -156.568,26.367 -2.848,3.808 -7.997,12.427 -11.442,19.152 -3.445,6.725 -6.386,12.338 -6.535,12.472 -0.15,0.134 -4.018,-2.633 -8.597,-6.15z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-ic_google_logo-xml-LC13" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-ic_google_logo-xml-LC14" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>34.1012001<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-ic_google_logo-xml-LC15" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#669900<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-ic_google_logo-xml-LC16" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-ic_google_logo-xml-LC17" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>M292.315,452.464C227.826,448.201 168.297,409.977 137.361,352.967l-3.676,-6.774 4.978,-4.112c2.738,-2.262 11.189,-8.853 18.78,-14.647 7.591,-5.794 18.855,-14.468 25.03,-19.275 6.175,-4.807 11.888,-9.14 12.696,-9.63 0.945,-0.573 3.405,3.105 6.896,10.31 18.324,37.818 51.292,61.133 93.115,65.853 22.879,2.582 50.415,-2.125 69.874,-11.942l7.423,-3.745 11.147,8.628c6.131,4.745 19.739,15.254 30.241,23.351l19.094,14.723 -5.647,4.9c-26.157,22.699 -67.515,39.577 -101.462,41.406 -7.175,0.387 -14.486,0.856 -16.246,1.043 -1.761,0.187 -9.541,-0.08 -17.29,-0.592z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-ic_google_logo-xml-LC18" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-ic_google_logo-xml-LC19" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>34.1012001<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-ic_google_logo-xml-LC20" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">path</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#3366cc<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-ic_google_logo-xml-LC21" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fillType</span>=<span class="pl-s"><span class="pl-pds">"</span>nonZero<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-ic_google_logo-xml-LC22" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pathData</span>=<span class="pl-s"><span class="pl-pds">"</span>m412.392,391.203c-9.861,-7.754 -22.973,-17.927 -29.136,-22.607 -6.163,-4.68 -11.204,-8.826 -11.201,-9.213 0.003,-0.387 3.517,-3.542 7.81,-7.012 13.934,-11.262 24.648,-28.731 29.318,-47.802l1.019,-4.162h-52.374,-52.374v-37.141,-37.141h90.174,90.174l1.703,9.285c2.12,11.56 2.108,43.849 -0.021,59.083 -3.899,27.894 -14.467,56.525 -29.363,79.554 -7.664,11.847 -24.383,31.449 -26.71,31.315 -0.598,-0.034 -9.156,-6.407 -19.017,-14.16z<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-ic_google_logo-xml-LC23" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeAlpha</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#00000000<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-ic_google_logo-xml-LC24" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineCap</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeLineJoin</span>=<span class="pl-s"><span class="pl-pds">"</span>round<span class="pl-pds">"</span></span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">strokeWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>34.1012001<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-ic_google_logo-xml-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-ic_google_logo-xml-LC25" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">vector</span>&gt;</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-mainactivity-java" class="file">
+      <div class="file-header">
+        <div class="file-actions">
+
+          <a class="btn btn-sm " href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/raw/2a7282c98c2975c030c5278a9e8648344c6407e0/MainActivity.java">Raw</a>
+        </div>
+        <div class="file-info">
+          <span class="icon">
+            <svg class="octicon octicon-gist" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg>
+          </span>
+          <a class="css-truncate" href="#file-mainactivity-java">
+            <strong class="user-select-contain gist-blob-name css-truncate-target">
+              MainActivity.java
+            </strong>
+          </a>
+        </div>
+      </div>
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-java ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-mainactivity-java-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-mainactivity-java-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span>package com.haerulmuttaqin.firebaselogin;</span></td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-mainactivity-java-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-mainactivity-java-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.content.Intent</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-mainactivity-java-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.os.Bundle</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-mainactivity-java-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.support.annotation.NonNull</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-mainactivity-java-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.support.v7.app.AppCompatActivity</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-mainactivity-java-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.util.Log</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-mainactivity-java-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.view.View</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-mainactivity-java-LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.widget.Button</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-mainactivity-java-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.widget.ImageView</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-mainactivity-java-LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.widget.ProgressBar</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-mainactivity-java-LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.widget.TextView</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-mainactivity-java-LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">android.widget.Toast</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-mainactivity-java-LC14" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-mainactivity-java-LC15" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.auth.api.signin.GoogleSignIn</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-mainactivity-java-LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.auth.api.signin.GoogleSignInAccount</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-mainactivity-java-LC17" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.auth.api.signin.GoogleSignInClient</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-mainactivity-java-LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.auth.api.signin.GoogleSignInOptions</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-mainactivity-java-LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.common.api.ApiException</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-mainactivity-java-LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.tasks.OnCompleteListener</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-mainactivity-java-LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.android.gms.tasks.Task</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-mainactivity-java-LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.firebase.auth.AuthCredential</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-mainactivity-java-LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.firebase.auth.AuthResult</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-mainactivity-java-LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.firebase.auth.FirebaseAuth</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-mainactivity-java-LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.firebase.auth.FirebaseUser</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-mainactivity-java-LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.google.firebase.auth.GoogleAuthProvider</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-mainactivity-java-LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-smi">com.squareup.picasso.Picasso</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-mainactivity-java-LC28" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-mainactivity-java-LC29" class="blob-code blob-code-inner js-file-line"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">LoginActivity</span> <span class="pl-k">extends</span> <span class="pl-e">AppCompatActivity</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-mainactivity-java-LC30" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-mainactivity-java-LC31" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">static</span> <span class="pl-k">final</span> <span class="pl-k">int</span> <span class="pl-c1">GOOGLE_SIGN_IN</span> <span class="pl-k">=</span> <span class="pl-c1">123</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-mainactivity-java-LC32" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">FirebaseAuth</span> mAuth;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-mainactivity-java-LC33" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">Button</span> btn_login, btn_logout;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-mainactivity-java-LC34" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">TextView</span> text;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-mainactivity-java-LC35" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">ImageView</span> image;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-mainactivity-java-LC36" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">ProgressBar</span> progressBar;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-mainactivity-java-LC37" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">GoogleSignInClient</span> mGoogleSignInClient;</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-mainactivity-java-LC38" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-mainactivity-java-LC39" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">@Override</span></td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-mainactivity-java-LC40" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>(<span class="pl-smi">Bundle</span> <span class="pl-v">savedInstanceState</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-mainactivity-java-LC41" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">super</span><span class="pl-k">.</span>onCreate(savedInstanceState);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-mainactivity-java-LC42" class="blob-code blob-code-inner js-file-line">        setContentView(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>activity_login);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="file-mainactivity-java-LC43" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="file-mainactivity-java-LC44" class="blob-code blob-code-inner js-file-line">        btn_login <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>login);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="file-mainactivity-java-LC45" class="blob-code blob-code-inner js-file-line">        btn_logout <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>logout);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L46" class="blob-num js-line-number" data-line-number="46"></td>
+        <td id="file-mainactivity-java-LC46" class="blob-code blob-code-inner js-file-line">        text <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>text);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L47" class="blob-num js-line-number" data-line-number="47"></td>
+        <td id="file-mainactivity-java-LC47" class="blob-code blob-code-inner js-file-line">        image <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>image);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="file-mainactivity-java-LC48" class="blob-code blob-code-inner js-file-line">        progressBar <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>progress_circular);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="file-mainactivity-java-LC49" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L50" class="blob-num js-line-number" data-line-number="50"></td>
+        <td id="file-mainactivity-java-LC50" class="blob-code blob-code-inner js-file-line">        mAuth <span class="pl-k">=</span> <span class="pl-smi">FirebaseAuth</span><span class="pl-k">.</span>getInstance();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L51" class="blob-num js-line-number" data-line-number="51"></td>
+        <td id="file-mainactivity-java-LC51" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L52" class="blob-num js-line-number" data-line-number="52"></td>
+        <td id="file-mainactivity-java-LC52" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">GoogleSignInOptions</span> gso <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">GoogleSignInOptions</span>.<span class="pl-smi">Builder</span>(<span class="pl-smi">GoogleSignInOptions</span><span class="pl-c1"><span class="pl-k">.</span>DEFAULT_SIGN_IN</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L53" class="blob-num js-line-number" data-line-number="53"></td>
+        <td id="file-mainactivity-java-LC53" class="blob-code blob-code-inner js-file-line">                .requestIdToken(getString(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>default_web_client_id))</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L54" class="blob-num js-line-number" data-line-number="54"></td>
+        <td id="file-mainactivity-java-LC54" class="blob-code blob-code-inner js-file-line">                .requestEmail()</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L55" class="blob-num js-line-number" data-line-number="55"></td>
+        <td id="file-mainactivity-java-LC55" class="blob-code blob-code-inner js-file-line">                .build();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L56" class="blob-num js-line-number" data-line-number="56"></td>
+        <td id="file-mainactivity-java-LC56" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L57" class="blob-num js-line-number" data-line-number="57"></td>
+        <td id="file-mainactivity-java-LC57" class="blob-code blob-code-inner js-file-line">        mGoogleSignInClient <span class="pl-k">=</span> <span class="pl-smi">GoogleSignIn</span><span class="pl-k">.</span>getClient(<span class="pl-c1">this</span>, gso);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L58" class="blob-num js-line-number" data-line-number="58"></td>
+        <td id="file-mainactivity-java-LC58" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L59" class="blob-num js-line-number" data-line-number="59"></td>
+        <td id="file-mainactivity-java-LC59" class="blob-code blob-code-inner js-file-line">        btn_login<span class="pl-k">.</span>setOnClickListener(v <span class="pl-k">-</span><span class="pl-k">&gt;</span> SignInGoogle());</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L60" class="blob-num js-line-number" data-line-number="60"></td>
+        <td id="file-mainactivity-java-LC60" class="blob-code blob-code-inner js-file-line">        btn_logout<span class="pl-k">.</span>setOnClickListener(v <span class="pl-k">-</span><span class="pl-k">&gt;</span> Logout());</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L61" class="blob-num js-line-number" data-line-number="61"></td>
+        <td id="file-mainactivity-java-LC61" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L62" class="blob-num js-line-number" data-line-number="62"></td>
+        <td id="file-mainactivity-java-LC62" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> (mAuth<span class="pl-k">.</span>getCurrentUser() <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L63" class="blob-num js-line-number" data-line-number="63"></td>
+        <td id="file-mainactivity-java-LC63" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">FirebaseUser</span> user <span class="pl-k">=</span> mAuth<span class="pl-k">.</span>getCurrentUser();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L64" class="blob-num js-line-number" data-line-number="64"></td>
+        <td id="file-mainactivity-java-LC64" class="blob-code blob-code-inner js-file-line">            updateUI(user);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L65" class="blob-num js-line-number" data-line-number="65"></td>
+        <td id="file-mainactivity-java-LC65" class="blob-code blob-code-inner js-file-line">        }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L66" class="blob-num js-line-number" data-line-number="66"></td>
+        <td id="file-mainactivity-java-LC66" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L67" class="blob-num js-line-number" data-line-number="67"></td>
+        <td id="file-mainactivity-java-LC67" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L68" class="blob-num js-line-number" data-line-number="68"></td>
+        <td id="file-mainactivity-java-LC68" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">SignInGoogle</span>() {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L69" class="blob-num js-line-number" data-line-number="69"></td>
+        <td id="file-mainactivity-java-LC69" class="blob-code blob-code-inner js-file-line">        progressBar<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>VISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L70" class="blob-num js-line-number" data-line-number="70"></td>
+        <td id="file-mainactivity-java-LC70" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">Intent</span> signInIntent <span class="pl-k">=</span> mGoogleSignInClient<span class="pl-k">.</span>getSignInIntent();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L71" class="blob-num js-line-number" data-line-number="71"></td>
+        <td id="file-mainactivity-java-LC71" class="blob-code blob-code-inner js-file-line">        startActivityForResult(signInIntent, <span class="pl-c1">GOOGLE_SIGN_IN</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L72" class="blob-num js-line-number" data-line-number="72"></td>
+        <td id="file-mainactivity-java-LC72" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L73" class="blob-num js-line-number" data-line-number="73"></td>
+        <td id="file-mainactivity-java-LC73" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L74" class="blob-num js-line-number" data-line-number="74"></td>
+        <td id="file-mainactivity-java-LC74" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">private</span> <span class="pl-k">void</span> <span class="pl-en">firebaseAuthWithGoogle</span>(<span class="pl-smi">GoogleSignInAccount</span> <span class="pl-v">acct</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L75" class="blob-num js-line-number" data-line-number="75"></td>
+        <td id="file-mainactivity-java-LC75" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>TAG<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>firebaseAuthWithGoogle:<span class="pl-pds">"</span></span> <span class="pl-k">+</span> acct<span class="pl-k">.</span>getId());</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L76" class="blob-num js-line-number" data-line-number="76"></td>
+        <td id="file-mainactivity-java-LC76" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L77" class="blob-num js-line-number" data-line-number="77"></td>
+        <td id="file-mainactivity-java-LC77" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">AuthCredential</span> credential <span class="pl-k">=</span> <span class="pl-smi">GoogleAuthProvider</span><span class="pl-k">.</span>getCredential(acct<span class="pl-k">.</span>getIdToken(), <span class="pl-c1">null</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L78" class="blob-num js-line-number" data-line-number="78"></td>
+        <td id="file-mainactivity-java-LC78" class="blob-code blob-code-inner js-file-line">        mAuth<span class="pl-k">.</span>signInWithCredential(credential)</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L79" class="blob-num js-line-number" data-line-number="79"></td>
+        <td id="file-mainactivity-java-LC79" class="blob-code blob-code-inner js-file-line">                .addOnCompleteListener(<span class="pl-c1">this</span>, task <span class="pl-k">-</span><span class="pl-k">&gt;</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L80" class="blob-num js-line-number" data-line-number="80"></td>
+        <td id="file-mainactivity-java-LC80" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">if</span> (task<span class="pl-k">.</span>isSuccessful()) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L81" class="blob-num js-line-number" data-line-number="81"></td>
+        <td id="file-mainactivity-java-LC81" class="blob-code blob-code-inner js-file-line">                        progressBar<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>INVISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L82" class="blob-num js-line-number" data-line-number="82"></td>
+        <td id="file-mainactivity-java-LC82" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L83" class="blob-num js-line-number" data-line-number="83"></td>
+        <td id="file-mainactivity-java-LC83" class="blob-code blob-code-inner js-file-line">                        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>TAG<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>signInWithCredential:success<span class="pl-pds">"</span></span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L84" class="blob-num js-line-number" data-line-number="84"></td>
+        <td id="file-mainactivity-java-LC84" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L85" class="blob-num js-line-number" data-line-number="85"></td>
+        <td id="file-mainactivity-java-LC85" class="blob-code blob-code-inner js-file-line">                        <span class="pl-smi">FirebaseUser</span> user <span class="pl-k">=</span> mAuth<span class="pl-k">.</span>getCurrentUser();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L86" class="blob-num js-line-number" data-line-number="86"></td>
+        <td id="file-mainactivity-java-LC86" class="blob-code blob-code-inner js-file-line">                        updateUI(user);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L87" class="blob-num js-line-number" data-line-number="87"></td>
+        <td id="file-mainactivity-java-LC87" class="blob-code blob-code-inner js-file-line">                    } <span class="pl-k">else</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L88" class="blob-num js-line-number" data-line-number="88"></td>
+        <td id="file-mainactivity-java-LC88" class="blob-code blob-code-inner js-file-line">                        progressBar<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>INVISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L89" class="blob-num js-line-number" data-line-number="89"></td>
+        <td id="file-mainactivity-java-LC89" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L90" class="blob-num js-line-number" data-line-number="90"></td>
+        <td id="file-mainactivity-java-LC90" class="blob-code blob-code-inner js-file-line">                        <span class="pl-smi">Log</span><span class="pl-k">.</span>w(<span class="pl-s"><span class="pl-pds">"</span>TAG<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>signInWithCredential:failure<span class="pl-pds">"</span></span>, task<span class="pl-k">.</span>getException());</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L91" class="blob-num js-line-number" data-line-number="91"></td>
+        <td id="file-mainactivity-java-LC91" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L92" class="blob-num js-line-number" data-line-number="92"></td>
+        <td id="file-mainactivity-java-LC92" class="blob-code blob-code-inner js-file-line">                        <span class="pl-smi">Toast</span><span class="pl-k">.</span>makeText(<span class="pl-smi">LoginActivity</span><span class="pl-k">.</span><span class="pl-c1">this</span>, <span class="pl-s"><span class="pl-pds">"</span>Authentication failed.<span class="pl-pds">"</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L93" class="blob-num js-line-number" data-line-number="93"></td>
+        <td id="file-mainactivity-java-LC93" class="blob-code blob-code-inner js-file-line">                                <span class="pl-smi">Toast</span><span class="pl-c1"><span class="pl-k">.</span>LENGTH_SHORT</span>)<span class="pl-k">.</span>show();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L94" class="blob-num js-line-number" data-line-number="94"></td>
+        <td id="file-mainactivity-java-LC94" class="blob-code blob-code-inner js-file-line">                        updateUI(<span class="pl-c1">null</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L95" class="blob-num js-line-number" data-line-number="95"></td>
+        <td id="file-mainactivity-java-LC95" class="blob-code blob-code-inner js-file-line">                    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L96" class="blob-num js-line-number" data-line-number="96"></td>
+        <td id="file-mainactivity-java-LC96" class="blob-code blob-code-inner js-file-line">                });</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L97" class="blob-num js-line-number" data-line-number="97"></td>
+        <td id="file-mainactivity-java-LC97" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L98" class="blob-num js-line-number" data-line-number="98"></td>
+        <td id="file-mainactivity-java-LC98" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L99" class="blob-num js-line-number" data-line-number="99"></td>
+        <td id="file-mainactivity-java-LC99" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">@Override</span></td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L100" class="blob-num js-line-number" data-line-number="100"></td>
+        <td id="file-mainactivity-java-LC100" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onActivityResult</span>(<span class="pl-k">int</span> <span class="pl-v">requestCode</span>, <span class="pl-k">int</span> <span class="pl-v">resultCode</span>, <span class="pl-smi">Intent</span> <span class="pl-v">data</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L101" class="blob-num js-line-number" data-line-number="101"></td>
+        <td id="file-mainactivity-java-LC101" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">super</span><span class="pl-k">.</span>onActivityResult(requestCode, resultCode, data);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L102" class="blob-num js-line-number" data-line-number="102"></td>
+        <td id="file-mainactivity-java-LC102" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L103" class="blob-num js-line-number" data-line-number="103"></td>
+        <td id="file-mainactivity-java-LC103" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> (requestCode <span class="pl-k">==</span> <span class="pl-c1">GOOGLE_SIGN_IN</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L104" class="blob-num js-line-number" data-line-number="104"></td>
+        <td id="file-mainactivity-java-LC104" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">Task&lt;<span class="pl-smi">GoogleSignInAccount</span>&gt;</span> task <span class="pl-k">=</span> <span class="pl-smi">GoogleSignIn</span><span class="pl-k">.</span>getSignedInAccountFromIntent(data);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L105" class="blob-num js-line-number" data-line-number="105"></td>
+        <td id="file-mainactivity-java-LC105" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">try</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L106" class="blob-num js-line-number" data-line-number="106"></td>
+        <td id="file-mainactivity-java-LC106" class="blob-code blob-code-inner js-file-line">                <span class="pl-smi">GoogleSignInAccount</span> account <span class="pl-k">=</span> task<span class="pl-k">.</span>getResult(<span class="pl-smi">ApiException</span><span class="pl-k">.</span>class);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L107" class="blob-num js-line-number" data-line-number="107"></td>
+        <td id="file-mainactivity-java-LC107" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> (account <span class="pl-k">!=</span> <span class="pl-c1">null</span>) firebaseAuthWithGoogle(account);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L108" class="blob-num js-line-number" data-line-number="108"></td>
+        <td id="file-mainactivity-java-LC108" class="blob-code blob-code-inner js-file-line">            } <span class="pl-k">catch</span> (<span class="pl-smi">ApiException</span> e) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L109" class="blob-num js-line-number" data-line-number="109"></td>
+        <td id="file-mainactivity-java-LC109" class="blob-code blob-code-inner js-file-line">                <span class="pl-smi">Log</span><span class="pl-k">.</span>w(<span class="pl-s"><span class="pl-pds">"</span>TAG<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Google sign in failed<span class="pl-pds">"</span></span>, e);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L110" class="blob-num js-line-number" data-line-number="110"></td>
+        <td id="file-mainactivity-java-LC110" class="blob-code blob-code-inner js-file-line">            }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L111" class="blob-num js-line-number" data-line-number="111"></td>
+        <td id="file-mainactivity-java-LC111" class="blob-code blob-code-inner js-file-line">        }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L112" class="blob-num js-line-number" data-line-number="112"></td>
+        <td id="file-mainactivity-java-LC112" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L113" class="blob-num js-line-number" data-line-number="113"></td>
+        <td id="file-mainactivity-java-LC113" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L114" class="blob-num js-line-number" data-line-number="114"></td>
+        <td id="file-mainactivity-java-LC114" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">private</span> <span class="pl-k">void</span> <span class="pl-en">updateUI</span>(<span class="pl-smi">FirebaseUser</span> <span class="pl-v">user</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L115" class="blob-num js-line-number" data-line-number="115"></td>
+        <td id="file-mainactivity-java-LC115" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> (user <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L116" class="blob-num js-line-number" data-line-number="116"></td>
+        <td id="file-mainactivity-java-LC116" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">String</span> name <span class="pl-k">=</span> user<span class="pl-k">.</span>getDisplayName();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L117" class="blob-num js-line-number" data-line-number="117"></td>
+        <td id="file-mainactivity-java-LC117" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">String</span> email <span class="pl-k">=</span> user<span class="pl-k">.</span>getEmail();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L118" class="blob-num js-line-number" data-line-number="118"></td>
+        <td id="file-mainactivity-java-LC118" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">String</span> photo <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(user<span class="pl-k">.</span>getPhotoUrl());</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L119" class="blob-num js-line-number" data-line-number="119"></td>
+        <td id="file-mainactivity-java-LC119" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L120" class="blob-num js-line-number" data-line-number="120"></td>
+        <td id="file-mainactivity-java-LC120" class="blob-code blob-code-inner js-file-line">            text<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span>Info : <span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L121" class="blob-num js-line-number" data-line-number="121"></td>
+        <td id="file-mainactivity-java-LC121" class="blob-code blob-code-inner js-file-line">            text<span class="pl-k">.</span>append(name <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L122" class="blob-num js-line-number" data-line-number="122"></td>
+        <td id="file-mainactivity-java-LC122" class="blob-code blob-code-inner js-file-line">            text<span class="pl-k">.</span>append(email);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L123" class="blob-num js-line-number" data-line-number="123"></td>
+        <td id="file-mainactivity-java-LC123" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">Picasso</span><span class="pl-k">.</span>with(<span class="pl-smi">LoginActivity</span><span class="pl-k">.</span><span class="pl-c1">this</span>)<span class="pl-k">.</span>load(photo)<span class="pl-k">.</span>into(image);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L124" class="blob-num js-line-number" data-line-number="124"></td>
+        <td id="file-mainactivity-java-LC124" class="blob-code blob-code-inner js-file-line">            btn_logout<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>VISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L125" class="blob-num js-line-number" data-line-number="125"></td>
+        <td id="file-mainactivity-java-LC125" class="blob-code blob-code-inner js-file-line">            btn_login<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>INVISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L126" class="blob-num js-line-number" data-line-number="126"></td>
+        <td id="file-mainactivity-java-LC126" class="blob-code blob-code-inner js-file-line">        } <span class="pl-k">else</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L127" class="blob-num js-line-number" data-line-number="127"></td>
+        <td id="file-mainactivity-java-LC127" class="blob-code blob-code-inner js-file-line">            text<span class="pl-k">.</span>setText(<span class="pl-s"><span class="pl-pds">"</span>Firebase Login <span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L128" class="blob-num js-line-number" data-line-number="128"></td>
+        <td id="file-mainactivity-java-LC128" class="blob-code blob-code-inner js-file-line">            <span class="pl-smi">Picasso</span><span class="pl-k">.</span>with(<span class="pl-smi">LoginActivity</span><span class="pl-k">.</span><span class="pl-c1">this</span>)<span class="pl-k">.</span>load(<span class="pl-smi">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>ic_firebase_logo)<span class="pl-k">.</span>into(image);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L129" class="blob-num js-line-number" data-line-number="129"></td>
+        <td id="file-mainactivity-java-LC129" class="blob-code blob-code-inner js-file-line">            btn_logout<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>INVISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L130" class="blob-num js-line-number" data-line-number="130"></td>
+        <td id="file-mainactivity-java-LC130" class="blob-code blob-code-inner js-file-line">            btn_login<span class="pl-k">.</span>setVisibility(<span class="pl-smi">View</span><span class="pl-c1"><span class="pl-k">.</span>VISIBLE</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L131" class="blob-num js-line-number" data-line-number="131"></td>
+        <td id="file-mainactivity-java-LC131" class="blob-code blob-code-inner js-file-line">        }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L132" class="blob-num js-line-number" data-line-number="132"></td>
+        <td id="file-mainactivity-java-LC132" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L133" class="blob-num js-line-number" data-line-number="133"></td>
+        <td id="file-mainactivity-java-LC133" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L134" class="blob-num js-line-number" data-line-number="134"></td>
+        <td id="file-mainactivity-java-LC134" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">private</span> <span class="pl-k">void</span> <span class="pl-en">Logout</span>() {</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L135" class="blob-num js-line-number" data-line-number="135"></td>
+        <td id="file-mainactivity-java-LC135" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">FirebaseAuth</span><span class="pl-k">.</span>getInstance()<span class="pl-k">.</span>signOut();</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L136" class="blob-num js-line-number" data-line-number="136"></td>
+        <td id="file-mainactivity-java-LC136" class="blob-code blob-code-inner js-file-line">        mGoogleSignInClient<span class="pl-k">.</span>signOut()<span class="pl-k">.</span>addOnCompleteListener(<span class="pl-c1">this</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L137" class="blob-num js-line-number" data-line-number="137"></td>
+        <td id="file-mainactivity-java-LC137" class="blob-code blob-code-inner js-file-line">                task <span class="pl-k">-</span><span class="pl-k">&gt;</span> updateUI(<span class="pl-c1">null</span>));</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L138" class="blob-num js-line-number" data-line-number="138"></td>
+        <td id="file-mainactivity-java-LC138" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-mainactivity-java-L139" class="blob-num js-line-number" data-line-number="139"></td>
+        <td id="file-mainactivity-java-LC139" class="blob-code blob-code-inner js-file-line">}</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-round_bg-xml" class="file">
+      <div class="file-header">
+        <div class="file-actions">
+
+          <a class="btn btn-sm " href="https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/raw/2a7282c98c2975c030c5278a9e8648344c6407e0/round_bg.xml">Raw</a>
+        </div>
+        <div class="file-info">
+          <span class="icon">
+            <svg class="octicon octicon-gist" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg>
+          </span>
+          <a class="css-truncate" href="#file-round_bg-xml">
+            <strong class="user-select-contain gist-blob-name css-truncate-target">
+              round_bg.xml
+            </strong>
+          </a>
+        </div>
+      </div>
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-xml ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-round_bg-xml-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-round_bg-xml-LC1" class="blob-code blob-code-inner js-file-line">&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>?&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-round_bg-xml-LC2" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">selector</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-round_bg-xml-LC3" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">item</span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-round_bg-xml-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">state_pressed</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-round_bg-xml-LC5" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">shape</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shape</span>=<span class="pl-s"><span class="pl-pds">"</span>rectangle<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-round_bg-xml-LC6" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">solid</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">color</span>=<span class="pl-s"><span class="pl-pds">"</span>#ffcc00<span class="pl-pds">"</span></span> /&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-round_bg-xml-LC7" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">corners</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">radius</span>=<span class="pl-s"><span class="pl-pds">"</span>50dp<span class="pl-pds">"</span></span> /&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-round_bg-xml-LC8" class="blob-code blob-code-inner js-file-line">    &lt;/<span class="pl-ent">shape</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-round_bg-xml-LC9" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">item</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-round_bg-xml-LC10" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">item</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-round_bg-xml-LC11" class="blob-code blob-code-inner js-file-line">    &lt;<span class="pl-ent">shape</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-round_bg-xml-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shape</span>=<span class="pl-s"><span class="pl-pds">"</span>rectangle<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-round_bg-xml-LC13" class="blob-code blob-code-inner js-file-line">        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-round_bg-xml-LC14" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">solid</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">color</span>=<span class="pl-s"><span class="pl-pds">"</span>#fff<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-round_bg-xml-LC15" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">corners</span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-round_bg-xml-LC16" class="blob-code blob-code-inner js-file-line">            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">bottomRightRadius</span>=<span class="pl-s"><span class="pl-pds">"</span>50dp<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-round_bg-xml-LC17" class="blob-code blob-code-inner js-file-line">            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">bottomLeftRadius</span>=<span class="pl-s"><span class="pl-pds">"</span>50dp<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-round_bg-xml-LC18" class="blob-code blob-code-inner js-file-line">            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">topLeftRadius</span>=<span class="pl-s"><span class="pl-pds">"</span>50dp<span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-round_bg-xml-LC19" class="blob-code blob-code-inner js-file-line">            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">topRightRadius</span>=<span class="pl-s"><span class="pl-pds">"</span>50dp<span class="pl-pds">"</span></span>/&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-round_bg-xml-LC20" class="blob-code blob-code-inner js-file-line">    &lt;/<span class="pl-ent">shape</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-round_bg-xml-LC21" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">item</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="file-round_bg-xml-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-round_bg-xml-LC22" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">selector</span>&gt;</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+
+    <a name="comments"></a>
+    <div class="discussion-timeline width-full js-quote-selection-container float-none" data-quote-markdown=".js-comment-body">
+      <div class="js-discussion js-socket-channel" data-channel="marked-as-read:gist:93481189">
+        
+
+<!-- Rendered timeline since 2019-05-09 14:14:44 -->
+<div id="partial-timeline-marker" class="js-timeline-marker js-updatable-content" data-url="/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3/show_partial?partial=gist%2Ftimeline_marker&amp;since=1557436484" data-last-modified="Thu, 09 May 2019 21:14:44 GMT">
+</div>
+
+
+        <div class="discussion-timeline-actions">
+            
+<div class="flash flash-warn mt-3">
+    <a rel="nofollow" class="btn btn-primary" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="79ec507ece05ac41e852d3e42b3cbff32272b8351fac240220357d6ef64ebafe" href="https://gist.github.com/join?source=comment-gist">Sign up for free</a>
+    <strong>to join this conversation on GitHub</strong>.
+    Already have an account?
+    <a rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;D243:5011:E6D43:13EA51:5D15A3EE&quot;,&quot;originating_url&quot;:&quot;https://gist.github.com/haerulmuttaqin/f0fd16bc0e7d9992dff9911f4ea622c3&quot;,&quot;referrer&quot;:&quot;https://www.youtube.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="1c879e5cddb6bc3066c7a48a0a0e320e5899ad6b2c22c7f30f865a23f58ffc7d" href="https://gist.github.com/login?return_to=https%3A%2F%2Fgist.github.com%2Fhaerulmuttaqin%2Ff0fd16bc0e7d9992dff9911f4ea622c3">Sign in to comment</a>
+</div>
+
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+
+  <div class="modal-backdrop js-touch-events"></div>
+</div><!-- /.container -->
+
+    </main>
+  </div>
+
+  </div>
+
+        
+<div class="footer container-lg width-full px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap ">
+      <li class="mr-3">© 2019 <span title="0.10240s from unicorn-86b4c694f4-9grkg">GitHub</span>, Inc.</li>
+        <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
+        <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
+        <li class="mr-3"><a data-ga-click="Footer, go to security, text:security" href="https://github.com/security">Security</a></li>
+        <li class="mr-3"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com/">Help</a></li>
+    </ul>
+
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mx-lg-4" href="https://github.com/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+   <ul class="list-style-none d-flex flex-wrap ">
+        <li class="mr-3"><a data-ga-click="Footer, go to contact, text:contact" href="https://github.com/contact">Contact GitHub</a></li>
+        <li class="mr-3"><a href="https://github.com/pricing" data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
+      <li class="mr-3"><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3"><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+        <li class="mr-3"><a href="https://github.blog/" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+
+    
+    
+    
+    
+    
+      <script crossorigin="anonymous" async="async" integrity="sha512-JOrUd4vpj4mrxilstscA1z9KzfRIfxDJmNsqo/sPgwJCS8ttl7CRcs2gSnaO2JmFYH07RPs2pX9xnc+Dad6hYg==" type="application/javascript" src="Firebase%20Login%20with%20Google%20(youtube%20tutorial)%20%C2%B7%20GitHub_files/gist-bootstrap-89c4d6b6.js"></script>
+
+    
+  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner" hidden="">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg>
+    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+  <template id="site-details-dialog">
+  <details class="details-reset details-overlay details-overlay-dark lh-default text-gray-dark hx_rsm" open="">
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog="">
+        <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template>
+
+  <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+  <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>
+
+  
+
+
+</body></html>

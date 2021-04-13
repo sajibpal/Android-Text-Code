@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AlertBilder</string>
+    <string-array name="day">
+       <item>SatureDay</item>
+        <item>SunDay</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>WednesDay</item>
+        <item>Thusday</item>
+        <item>Friday</item>
+    </string-array>
+</resources>

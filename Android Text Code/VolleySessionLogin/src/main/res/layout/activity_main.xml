@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.volleysessionlogin.MainActivity">
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/name"
+      android:hint="User name"
+      />
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/password"
+       android:hint="Password"
+       android:inputType="textPassword"
+       android:layout_marginTop="20dp"
+       />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:text="Login"
+        android:layout_marginTop="10dp"
+        />
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/registration"
+       android:layout_marginTop="100dp"
+       android:textSize="20sp"
+       android:textAlignment="center"
+       android:onClick="Register"
+       android:text="New User?Register Hare..."/>
+
+</LinearLayout>

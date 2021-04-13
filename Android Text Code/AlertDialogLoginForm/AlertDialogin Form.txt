@@ -1,0 +1,131 @@
+activity_main.xml ******
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.alertdialogloginform.MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:text="Show Dialog"
+        android:layout_height="wrap_content"
+        android:onClick="Show"/>
+</LinearLayout>
+
+
+MainActivity.java ******
+
+package com.example.sajibpal.alertdialogloginform;
+
+
+
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText txt,txt1;
+    AlertDialog.Builder bilder;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+    }
+   public  void  Show(View v){
+
+         bilder=new AlertDialog.Builder(MainActivity.this);
+
+         LayoutInflater inflater=getLayoutInflater();
+         View ok=inflater.inflate(R.layout.login,null);
+          txt=(EditText) ok.findViewById(R.id.text1);
+          txt1=(EditText) ok.findViewById(R.id.text2);
+         Button btn=(Button) ok.findViewById(R.id.but);
+
+         btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                String email=txt.getText().toString();
+                String password=txt1.getText().toString();
+
+                 if(!email.isEmpty() && !password.isEmpty()){
+
+                     Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                 }
+                else{
+
+                     Toast.makeText(MainActivity.this, "fill empty field", Toast.LENGTH_SHORT).show();
+                 }
+             }
+         });
+       bilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+
+           }
+       });
+
+       bilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+
+               dialog.cancel();
+           }
+       });
+        bilder.setView(ok);
+        AlertDialog alert=bilder.create();
+        alert.show();
+   }
+}
+
+
+login.xml *********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:textColor="#ec5c5c"
+        android:layout_height="wrap_content"
+        android:text="Login Form"/>
+    <EditText
+        android:id="@+id/text1"
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Address :"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password :"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/but"
+        android:layout_width="match_parent"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_height="wrap_content"
+        android:text="Login "/>
+
+</LinearLayout>

@@ -1,0 +1,77 @@
+activity_main.xml****
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.zoominout.MainActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:src="@drawable/sajib_duet"/>
+
+    <ZoomControls
+        android:id="@+id/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+    </ZoomControls>
+
+</LinearLayout>
+
+MainActivity.java *****
+
+
+package com.example.sajibpal.zoominout;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ZoomButtonsController;
+import android.widget.ZoomControls;
+
+public class MainActivity extends AppCompatActivity {
+
+    ZoomControls zoom1;
+    ImageView image1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        image1=(ImageView)findViewById(R.id.image);
+        zoom1=(ZoomControls) findViewById(R.id.zoom);
+
+        zoom1.setOnZoomInClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                float x=image1.getScaleX();
+                float y=image1.getScaleY();
+
+                image1.setScaleX((float)x+1);
+                image1.setScaleY((float)y+1);
+            }
+        });
+        zoom1.setOnZoomOutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                float x=image1.getScaleX();
+                float y=image1.getScaleY();
+              if(x>1 && y>1){
+                image1.setScaleX((float)x-1);
+                image1.setScaleY((float)y-1);
+              }
+            }
+        });
+    }
+}

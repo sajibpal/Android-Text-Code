@@ -1,0 +1,229 @@
+
+Android Botton Navigation ativity nite hobe Default**********
+
+activity_maim*****************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.bottomvnavigationview.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        
+    </FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
+
+</LinearLayout>
+
+
+MainActivity.java *****************
+
+
+package com.example.sajibpal.bottomvnavigationview;
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //default Bottomitemmenu without click framelayout replace by je layout show korbe
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new HomeFrame()).commit();
+        }
+
+    }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    selectedFragment = new HomeFrame();
+                    break;
+                case R.id.navigation_dashboard:
+                    selectedFragment = new NotificationFrame();
+                    break;
+                case R.id.navigation_notifications:
+                    selectedFragment = new HomeFrame();
+                    break;
+
+            }
+          //framelayout replace by other layout
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
+
+                return true;
+        }
+
+    };
+
+
+}
+
+
+notification.xml ***************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center">
+
+    <TextView
+        
+        android:id="@+id/notifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HI Sajib"/>
+
+</LinearLayout>
+
+
+home.xml *****************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HI Rajib"/>
+
+</LinearLayout>
+
+
+
+NotificationFrame.java***************
+
+
+package com.example.sajibpal.bottomvnavigationview;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by sajib pal on 11/14/2019.
+ */
+
+public class NotificationFrame extends Fragment {
+
+  TextView txt;
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+            View ok=  inflater.inflate(R.layout.notifaction, container, false);
+
+               txt= (TextView) ok.findViewById(R.id.notifi);
+
+             txt.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+
+                     txt.setText("Sajib is Good");
+                 }
+             });
+           return ok;
+    }
+}
+
+
+HomeFrame.java ************
+
+
+package com.example.sajibpal.bottomvnavigationview;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by sajib pal on 11/14/2019.
+ */
+
+public class HomeFrame extends Fragment {
+
+     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.home, container, false);
+    }
+}
+
+
+
+
+navigation(menu) ********************
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_notifications" />
+
+</menu>
+
+
+buid.gradle******************
+
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-vector-drawable:25.3.1'

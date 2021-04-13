@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.staratbar.MainActivity">
+
+
+    <SeekBar
+        android:id="@+id/sbar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:max="50"
+        android:progress="10"
+        android:progressBackgroundTint="#87edbf"
+        android:progressTint="#267eca"
+        android:thumbTint="#47e1d9" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"/>
+
+</LinearLayout>

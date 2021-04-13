@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/share"
+        android:title="option1"
+        android:icon="@drawable/ic_add_alert_black_24dp"
+        />
+    <item
+        android:id="@+id/ball"
+        android:title="option1"
+        android:icon="@drawable/ic_24dp"
+        />
+
+</menu>

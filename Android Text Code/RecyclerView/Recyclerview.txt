@@ -1,0 +1,272 @@
+activity_main.xml ***************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.recycleview.MainActivity">
+
+   <android.support.v7.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:id="@+id/tool"
+       android:background="@color/colorPrimary">
+
+   </android.support.v7.widget.Toolbar>
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/recycle">
+
+   </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
+
+
+MainActivity.java***********
+
+package com.example.sajibpal.recycleview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    ArrayList<Album> arrayList=new ArrayList<>();
+    int[] img_id={R.drawable.bd,R.drawable.auatrila,R.drawable.india,R.drawable.nepal,
+            R.drawable.srilankaflag,R.drawable.sajib_duet};
+    Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        recyclerView= (RecyclerView) findViewById(R.id.recycle);
+        layoutManager=new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        toolbar=(Toolbar) findViewById(R.id.tool);
+        toolbar.setTitle("sajib pal");
+
+        for(int id : img_id){
+
+            arrayList.add(new Album(id));
+        }
+
+        adapter=new RecyclerShow(this,arrayList);
+        recyclerView.setAdapter(adapter);
+    }
+}
+
+
+RecyclerShow.java *************
+
+package com.example.sajibpal.recycleview;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+
+import java.util.ArrayList;
+
+/**
+ * Created by sajib pal on 10/10/2018.
+ */
+
+public class RecyclerShow extends RecyclerView.Adapter<RecyclerShow.MyholderView> {
+
+    ArrayList<Album> arrayList=new ArrayList<>();
+    Context context1;
+
+    RecyclerShow(Context context, ArrayList<Album> arrayList){
+
+     this.arrayList=arrayList;
+        this.context1=context;
+    }
+    @Override
+    public MyholderView onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View ok=LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview,parent,false);
+
+        return new MyholderView(ok);
+    }
+
+    @Override
+    public void onBindViewHolder(MyholderView holder, final int position) {
+
+        holder.imageView.setImageResource(arrayList.get(position).getImage_id());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(context1,Detail.class);
+                intent.putExtra("Image",arrayList.get(position).getImage_id());
+                context1.startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+
+        return arrayList.size();
+    }
+
+    public  static  class  MyholderView extends RecyclerView.ViewHolder{
+
+        ImageView imageView;
+        CardView cardView;
+        public MyholderView(View itemView) {
+
+            super(itemView);
+            imageView=(ImageView)itemView.findViewById(R.id.img);
+            cardView=(CardView)itemView.findViewById(R.id.card);
+        }
+    }
+}
+
+
+Album.java *****************
+
+
+package com.example.sajibpal.recycleview;
+
+/**
+ * Created by sajib pal on 10/10/2018.
+ */
+
+public class Album {
+
+   private int image_id;
+
+    Album(int image){
+
+      setImage_id(image);
+    }
+
+    public int getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(int image) {
+        this.image_id = image;
+    }
+}
+
+
+cardview.xml ************
+
+ <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:id="@+id/card"
+    android:elevation="3dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="6dp">
+
+    <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/img"
+    android:src="@drawable/bd"
+    android:scaleType="fitXY"
+    android:padding="4dp"/>
+
+</android.support.v7.widget.CardView>
+
+
+
+activity_detail.xml **********
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.recycleview.Detail">
+
+
+    <ImageView
+        android:id="@+id/vimage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/sajib_duet"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"/>
+
+</RelativeLayout>
+
+
+
+
+Detail.java ***************
+
+package com.example.sajibpal.recycleview;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
+
+public class Detail extends AppCompatActivity {
+
+    ImageView img;
+    PhotoViewAttacher attacher;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail);
+
+        img= (ImageView) findViewById(R.id.vimage);
+        Intent intent=getIntent();
+        int image1=intent.getExtras().getInt("Image");
+
+        img.setImageResource(image1);
+        attacher=new PhotoViewAttacher(img);
+    }
+}
+
+
+
+build.gardle(module.app) **********
+
+   compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.github.chrisbanes:PhotoView:1.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+
+
+build.gardle(Project.RecyclerView) *********
+  llprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+        jcenter()
+    }
+}

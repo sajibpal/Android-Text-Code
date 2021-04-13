@@ -1,0 +1,124 @@
+activity_main .xml******
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2297d6"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.search.MainActivity">
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:queryHint="Search"
+        android:background="#fcb0b0"
+        android:layout_height="wrap_content"
+        android:id="@+id/ser">
+    </SearchView>
+
+    <ListView
+        android:listSelector="#065b89"
+        android:id="@+id/list"
+        android:dividerHeight="1dp"
+        android:divider="#ff22"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>
+
+
+MainActivity.java *******
+
+
+package com.example.sajibpal.search;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.SearchView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    ListView vlist;
+    SearchView searchView;
+    String[] coun;
+    ArrayAdapter<String> adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        vlist=(ListView) findViewById(R.id.list);
+        searchView=(SearchView) findViewById(R.id.ser);
+
+         coun=getResources().getStringArray(R.array.country);
+         adapter=new ArrayAdapter<String>(MainActivity.this,R.layout.good,R.id.txt,coun);
+         vlist.setAdapter(adapter);
+
+         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        vlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String name=adapter.getItem(position);
+                Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+}
+
+good.xml *********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt"
+        android:padding="6dp"
+        android:textColor="#192c96"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
+
+string.xml  ******
+
+<resources>
+    <string name="app_name">Search</string>
+    <string-array name="country">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+        <item>Maldip</item>
+    </string-array>
+</resources>

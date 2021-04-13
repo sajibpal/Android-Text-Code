@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GrideView</string>
+    <string-array name="typ">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+    </string-array>
+
+</resources>

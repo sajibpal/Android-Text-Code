@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ImageSlider</string>
+    <string-array name="nam">
+        <item>Sajib pal</item>
+        <item>Rajib pal</item>
+        <item>Sajib</item>
+    </string-array>
+</resources>

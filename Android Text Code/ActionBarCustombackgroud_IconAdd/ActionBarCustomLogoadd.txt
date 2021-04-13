@@ -1,0 +1,89 @@
+ activity_main.xml  ********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/index"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.actionbarcustomback.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sajib pal!"
+        android:textStyle="bold"
+        android:textSize="25sp"
+       />
+
+</LinearLayout>
+
+MainActivity.java *******
+
+package com.example.sajibpal.actionbarcustomback;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+    }
+}
+
+style.xml ***********
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+   <style name="custom" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+
+       <item name="actionBarStyle">@style/deflt</item>
+   </style>
+    <style name="deflt" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+
+        <item name="background">@drawable/index</item>
+    </style>
+</resources>
+
+
+manifest.xml *******
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sajibpal.actionbarcustomback">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".MainActivity"
+            android:theme="@style/custom">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

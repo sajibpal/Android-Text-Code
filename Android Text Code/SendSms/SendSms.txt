@@ -1,0 +1,94 @@
+activity_main.xml **********
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.smssend.MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/number"
+        android:layout_marginTop="30dp"
+        android:inputType="number"
+        android:hint="Enter Mobile number : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/message"
+        android:hint="Write Message :"
+        android:lines="5"
+     />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="Send Message"
+        android:onClick="send"
+
+    />
+
+</LinearLayout>
+
+
+mainActivity.java *********
+
+package com.example.sajibpal.smssend;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText num,mess;
+    Button button;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        num= (EditText) findViewById(R.id.number);
+        mess= (EditText) findViewById(R.id.message);
+        button= (Button) findViewById(R.id.btn);
+    }
+
+    public void send(View view){
+
+       String number=num.getText().toString().trim();
+       String message=mess.getText().toString().trim();
+
+        if(number==null||number.equals("")||message==null||message.equals("")){
+
+            Toast.makeText(this, "field not empty", Toast.LENGTH_SHORT).show();
+        }
+        else{
+
+            SmsManager manager=SmsManager.getDefault();
+            manager.sendTextMessage(number,null,message,null,null);
+            Toast.makeText(this, "Message send successfully "+number, Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+
+
+Manifest.xml **********
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sajibpal.smssend">
+
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+       

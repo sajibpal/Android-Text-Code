@@ -1,0 +1,50 @@
+MainActivity.java ***********
+
+package com.example.sajibpal.internetchecking;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        checkconnection();
+    }
+
+    public void checkconnection(){
+
+        ConnectivityManager manager= (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork=manager.getActiveNetworkInfo();
+
+         if(null!=activeNetwork){  //if any network connection  available
+
+             if(activeNetwork.getType()==ConnectivityManager.TYPE_WIFI){
+                 Toast.makeText(this, "Wifi is Conncted", Toast.LENGTH_SHORT).show();
+             }
+             if(activeNetwork.getType()==ConnectivityManager.TYPE_MOBILE){
+                 Toast.makeText(this, "Mobile Internet is on", Toast.LENGTH_SHORT).show();
+             }
+
+         }
+
+         else{
+             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+         }
+    }
+}
+
+
+Manifest.xml**********
+
+   <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>

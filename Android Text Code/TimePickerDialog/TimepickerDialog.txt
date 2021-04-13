@@ -1,0 +1,92 @@
+active-main.xml****
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.example.sajibpal.timepickerdialog.MainActivity">
+
+   <Button
+       android:id="@+id/button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Show time"
+       android:onClick="click"
+       android:textAllCaps="false"
+       android:textColor="#ff22"/>
+
+   <TextView
+       android:id="@+id/text"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="15dp"/>
+
+</LinearLayout>
+
+style.xml****
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">#ffd600</item>
+        <item name="colorAccent">#b71c1c</item>
+        <item name="android:textColorPrimary">#43a047</item>
+        <item name="android:textColorSecondary">#f44336</item>
+
+    </style>
+
+</resources>
+
+MainActivity.java****
+
+package com.example.sajibpal.timepickerdialog;
+
+import android.app.TimePickerDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+public class MainActivity extends AppCompatActivity {
+    Button btn;
+    TextView txt;
+    TimePickerDialog picker;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn=(Button) findViewById(R.id.button);
+        txt=(TextView) findViewById(R.id.text);
+
+    }
+    public  void click(View l){
+
+        TimePicker time=new TimePicker(this);
+        time.setIs24HourView(true);
+       int currenthoure= time.getCurrentHour();
+       int currentmimite=time.getCurrentMinute();
+
+       picker=new TimePickerDialog(MainActivity.this,
+               new TimePickerDialog.OnTimeSetListener() {
+                   @Override
+                   public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                    txt.setText("Time :"+hourOfDay+": "+minute);
+                   }
+               },currenthoure,currentmimite,true);
+
+        picker.show();
+    }
+
+}

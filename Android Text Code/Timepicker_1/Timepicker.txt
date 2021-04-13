@@ -1,0 +1,73 @@
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context="com.example.sajibpal.timepicker.MainActivity">
+
+   <TimePicker
+       android:id="@+id/time"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:headerBackground="#3258e1"
+       android:timePickerMode="clock"
+       android:numbersSelectorColor="@color/colorPrimaryDark"
+       android:numbersBackgroundColor="#dfe4c4"
+       android:numbersTextColor="#3676e4"
+       android:amPmTextColor="#ff22"
+       android:numbersInnerTextColor="#ff22"
+       >
+   </TimePicker>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Time"
+        android:layout_gravity="center_horizontal"
+        android:onClick="time"/>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+
+        />
+
+</LinearLayout>
+
+MainActivity.java
+
+package com.example.sajibpal.timepicker;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+public class MainActivity extends AppCompatActivity {
+
+    TimePicker ptime;
+    TextView txt;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ptime=(TimePicker) findViewById(R.id.time);
+        txt=(TextView) findViewById(R.id.text);
+        ptime.setIs24HourView(true);
+        txt.setText("Current Time: "+ ptime.getCurrentHour()+": "+ptime.getCurrentMinute());
+    }
+    public void time(View k){
+
+       String timeshow=ptime.getCurrentHour()+": "+ptime.getCurrentMinute();
+        txt.setText(timeshow);
+    }
+}

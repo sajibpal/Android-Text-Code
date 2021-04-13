@@ -1,0 +1,670 @@
+activity_main().xml **************
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.firebaseimageupload.MainActivity">
+
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/imagepreview"/>
+
+    <ProgressBar
+        android:id="@+id/uploadProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgPreview" />
+
+    <Button
+        android:id="@+id/chooseImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uploadProgress"
+        android:layout_marginTop="40px"
+        android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+        android:text="Chooese Image to Upload"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/imgDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseImage"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Enter Image Description here"
+
+        />
+
+    <Button
+        android:id="@+id/btnUploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+        android:text="Upload Image"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="View Gallery"
+        android:id="@+id/viewGallery"
+        android:textSize="20sp"
+
+        />
+
+</RelativeLayout>
+
+
+MainActivity.java ***************
+
+
+package com.example.sajibpal.firebaseimageupload;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final int CHOOSE_IMAGE = 1;
+
+    private Button chooseImage, btnUploadImage;
+    private TextView viewGallery;
+    private ImageView imgPreview;
+    private EditText imgDescription;
+    private ProgressBar uploadProgress;
+
+    private Uri imgUrl;
+
+    private StorageReference mStorageRef;
+    private DatabaseReference mDatabaseRef;
+
+    private StorageTask mUploadTask;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        uploadProgress = (ProgressBar) findViewById(R.id.uploadProgress);
+        chooseImage = (Button) findViewById(R.id.chooseImage);
+        btnUploadImage = (Button) findViewById(R.id.btnUploadImage);
+
+        viewGallery = (TextView) findViewById(R.id.viewGallery);
+
+        imgDescription = (EditText) findViewById(R.id.imgDescription);
+        imgPreview = (ImageView) findViewById(R.id.imgPreview);
+
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+
+        //Image galley show firebase Upload image
+        viewGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ViewImageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //For Image Upload firebase database
+        btnUploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //if image not complete then try upload other image then show toast message
+                if (mUploadTask != null && mUploadTask.isInProgress()) {
+                    Toast.makeText(MainActivity.this, "Upload in progress", Toast.LENGTH_LONG).show();
+                } else {
+                    uploadImage();
+                }
+            }
+        });
+
+
+        chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFileChoose();
+            }
+        });
+    }
+    //Image selected from mobile Gallery
+    private void showFileChoose() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, CHOOSE_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHOOSE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imgUrl = data.getData();
+
+            Picasso.with(this).load(imgUrl).into(imgPreview); //show selected imageview
+        }
+
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
+
+    //For Image Upload method firebase
+    private void uploadImage() {
+        if (imgUrl != null) { //if image selected
+
+            //system time converted and image extension find child node set data for different id image
+            final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(imgUrl));
+
+            //Image upload in storage with time and extension
+            mUploadTask = fileReference.putFile(imgUrl)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    uploadProgress.setProgress(0);
+                                }
+                            }, 500);
+
+                            //image information Upload database successfully
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Upload upload = new Upload(imgDescription.getText().toString().trim(), uri.toString());
+                                    String uploadID = mDatabaseRef.push().getKey(); //for database child key found
+                                    mDatabaseRef.child(uploadID).setValue(upload);//child key value under store image name and firebase URl
+                                    Toast.makeText(MainActivity.this, "Upload successfully", Toast.LENGTH_LONG).show();
+                                    imgPreview.setImageResource(R.drawable.imagepreview);//imageview empty
+                                    imgDescription.setText("");//Editext field empty
+                                }
+                            });
+
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() { //for upload file error show
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //For image upload set progress bar value filup
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            uploadProgress.setProgress((int) progress);
+                        }
+                    });
+        } else {
+            Toast.makeText(MainActivity.this, "No file selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+
+
+
+ImageAdapter.java **********
+
+
+package com.example.sajibpal.firebaseimageupload;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+
+    private Context mContext;
+    private List<Upload> mUploads;
+    OnItemClickListener listener;
+
+    public ImageAdapter(Context context, List<Upload> uploads)
+    {
+        mContext=context;
+        mUploads=uploads;
+    }
+
+    @NonNull
+    @Override
+    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v=LayoutInflater.from(mContext).inflate(R.layout.image_item, viewGroup,false);
+        return  new ImageViewHolder(v);
+    }
+
+    //Firebase upload image show for set name and image textview and Imageview
+    @Override
+    public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
+        Upload uploadCur=mUploads.get(i);
+        imageViewHolder.img_description.setText(uploadCur.getImgName());
+        Picasso.with(mContext)
+                .load(uploadCur.getImgUrl())
+                .placeholder(R.drawable.imagepreview)//default image show when not load image
+                .fit()
+                .centerCrop()
+                .into(imageViewHolder.image_view);
+
+    }
+
+    @Override
+    public int getItemCount() {
+
+        return mUploads.size();
+    }
+
+    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener,MenuItem.OnMenuItemClickListener{
+
+        public TextView img_description;
+        public ImageView image_view;
+
+        public ImageViewHolder(@NonNull View itemView) {
+            super(itemView);  //image_item.xml text and imageview found
+            img_description = (TextView) itemView.findViewById(R.id.img_description);
+            image_view = (ImageView) itemView.findViewById(R.id.image_view);
+
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if(listener !=null){
+
+                int position =getAdapterPosition();
+
+                if(position !=RecyclerView.NO_POSITION){
+
+                    listener.onItemClick(position);
+                }
+            }
+
+    }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+            menu.setHeaderTitle("Choose an action");
+            MenuItem doAnyTask=menu.add(Menu.NONE,1,1,"Do any task");
+            MenuItem delete=menu.add(Menu.NONE,2,2,"Delete");
+
+            doAnyTask.setOnMenuItemClickListener(this);
+            delete.setOnMenuItemClickListener(this);
+
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            if(listener !=null){
+
+                int position =getAdapterPosition();
+
+                if(position !=RecyclerView.NO_POSITION){
+
+                    switch (item.getItemId()){
+
+                        case 1:
+                            listener.onDoAnyTask(position);
+                            return true;
+                        case 2:
+                            listener.onDelete (position);
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+    }
+
+    public  interface  OnItemClickListener{
+
+        void onItemClick(int position);
+        void onDoAnyTask(int position);
+        void onDelete(int position);
+
+    }
+
+    public  void setOnItemClickListener(OnItemClickListener listener){
+
+        this.listener=listener;
+    }
+
+}
+
+
+
+
+Upload.java **********************
+
+
+package com.example.sajibpal.firebaseimageupload;
+
+import com.google.firebase.database.Exclude;
+
+public class Upload {
+    private String imgName;
+    private String imgUrl;
+    String key;
+
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+    @Exclude
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Upload() {
+    }
+
+    public Upload(String imgName, String imgUrl) {
+        if(imgName.trim().equals(""))
+        {
+            imgName="No name"; //if image name not found editext then default no name
+        }
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+
+}
+
+
+
+activity_view_image.xml*****************
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewImageActivity">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_circular"
+        android:layout_centerInParent="true"
+        />
+    <android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recycler_view"
+    
+    />
+
+</RelativeLayout>
+
+
+ViewImageActivity.java ***************
+
+
+package com.example.sajibpal.firebaseimageupload;
+
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ViewImageActivity extends AppCompatActivity {
+
+    private RecyclerView mRecyclerView;
+    private ImageAdapter mAdapter;
+
+    private ProgressBar progressBar;
+     LinearLayoutManager linearLayoutManager;
+     DatabaseReference mDatabaseRef;
+    private List<Upload> mUploads;
+    FirebaseStorage firebaseStorage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_image);
+
+        mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+
+        linearLayoutManager=new LinearLayoutManager(this);
+
+        //for image show reverse order *********
+
+         linearLayoutManager.setReverseLayout(true);
+         linearLayoutManager.setStackFromEnd(true);
+
+        //***********
+
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        progressBar= (ProgressBar) findViewById(R.id.progress_circular);
+
+        mUploads=new ArrayList<>();
+
+        //for uploads folder database from data read
+        firebaseStorage=FirebaseStorage.getInstance();
+        mDatabaseRef=FirebaseDatabase.getInstance().getReference("uploads");
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                mUploads.clear();
+               for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+               {
+                   Upload upload=postSnapshot.getValue(Upload.class);//Upload class call received image name and imgURL
+                   upload.setKey(postSnapshot.getKey());
+                   mUploads.add(upload); //ArrayList add value
+               }
+               mAdapter=new ImageAdapter(ViewImageActivity.this, mUploads);
+               mRecyclerView.setAdapter(mAdapter); //recyclerview view add textview and Imageview firebase image
+               progressBar.setVisibility(View.INVISIBLE);
+
+                mAdapter=new ImageAdapter(ViewImageActivity.this,mUploads);
+                mRecyclerView.setAdapter(mAdapter);
+
+
+                mAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+
+                        String text=mUploads.get(position).getImgName();
+                        Toast.makeText(ViewImageActivity.this, text+"is Selected"+position, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onDoAnyTask(int position) {
+
+                        Toast.makeText(ViewImageActivity.this,"Do any Task is Selected", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onDelete(int position) {
+
+                        Upload selectItem=mUploads.get(position);
+                        final String key=selectItem.getKey();
+
+                        StorageReference storeRefarance=firebaseStorage.getReferenceFromUrl(selectItem.getImgUrl());
+                        storeRefarance.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                mDatabaseRef.child(key).removeValue();
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(ViewImageActivity.this, "Error "+databaseError.getMessage() , Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
+    }
+}
+
+
+
+
+image_item.xml *************
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:layout_margin="10dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_description"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Image Caption/Description"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="18sp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/image_view"
+        android:src="@drawable/imagepreview"
+        android:scaleType="centerCrop"
+        />
+
+</LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+
+
+build.gradle(app) ************
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.google.firebase:firebase-auth:11.0.4'
+    compile 'com.google.firebase:firebase-database:11.0.4'
+    compile 'com.google.firebase:firebase-storage:11.0.4'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.squareup.picasso:picasso:2.3.3'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+
+AndroidManifest.xml *************
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

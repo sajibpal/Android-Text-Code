@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/setting"
+        android:title="Setting"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action"
+        />
+    <item
+        android:id="@+id/share"
+        android:title="Share"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_name"
+
+        />
+    <item
+        android:id="@+id/back"
+        android:title="Feedback"
+        app:showAsAction="never"
+
+        />
+    <item
+        android:id="@+id/about"
+        android:title="About as"
+        app:showAsAction="never"
+
+        />
+</menu>

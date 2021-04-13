@@ -1,0 +1,114 @@
+activity_main.xml **********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#54a4c9"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.profile.MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/sajib_duet" />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/name"
+        android:hint="User Name"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/lock"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:onClick="show"
+        android:layout_marginLeft="30dp"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/tview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Number of attempt remaining: 3 "
+        android:textColor="#e9e1e1"
+        android:textSize="15sp" />
+</LinearLayout>
+
+
+MainActivity.java*********
+
+
+ package com.example.sajibpal.profile;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    EditText txt,txt1;
+    TextView textView;
+    int count=3;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        txt=(EditText) findViewById(R.id.text);
+        txt1=(EditText)findViewById(R.id.text1);
+        textView=(TextView)findViewById(R.id.tview);
+        btn=(Button)findViewById(R.id.button);
+    }
+
+    public  void show(View v){
+
+        String name=txt.getText().toString();
+        String password=txt1.getText().toString();
+
+        if(name.equals("sajib pal") && password.equals("154045")){
+
+            Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+        }
+        else{
+
+           count--;
+           textView.setText("Number of attempt remaining: " +count );
+            if(count==0){
+
+              btn.setEnabled(false);
+
+            }
+        }
+    }
+}

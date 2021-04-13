@@ -1,0 +1,229 @@
+activity_main.xml ***************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.example.sajibpal.imagesliderads.MainActivity">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
+
+
+MainActivity.java ***********
+
+package com.example.sajibpal.imagesliderads;
+
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    InterstitialAd minterstialad;
+    ViewPager pager;
+    String[] name;
+    int[] images={R.drawable.sajib_duet,R.drawable.rajibpal,R.drawable.maingait};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//app id
+
+        pager=(ViewPager) findViewById(R.id.page);
+        name=getResources().getStringArray(R.array.nam);
+        CustomAdapter adapter=new CustomAdapter(this,name,images);
+        pager.setAdapter(adapter);
+
+        minterstialad = new InterstitialAd(this);
+        minterstialad.setAdUnitId("ca-app-pub-3940256099942544/1033173712");// InterstitialAdd id
+        minterstialad.loadAd(new AdRequest.Builder().build());
+
+//Image slider properity all
+  pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+      }
+
+      @Override
+      public void onPageSelected(int position) {
+
+          if(position%2==0){ //slider Image je number index %2 ==0 ex: 2,4,6,8.... position image ids show
+
+
+              minterstialad.show();
+          }
+      }
+
+      @Override
+      public void onPageScrollStateChanged(int state) {
+
+      }
+  });
+
+        //for ads close new ads load hobe
+        minterstialad.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdClosed() {
+
+                minterstialad.loadAd(new AdRequest.Builder().build());
+            }
+        });
+
+    }
+}
+
+
+CustomAdapter.java ***********
+
+
+package com.example.sajibpal.imagesliderads;
+
+import android.content.Context;
+import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+/**
+ * Created by sajib pal on 9/19/2018.
+ */
+
+public class CustomAdapter extends PagerAdapter {
+    String[] name1;
+    int[] images1;
+    Context context1;
+    LayoutInflater inflater;
+
+
+    public CustomAdapter(Context context,String[] nam, int[] image) {
+
+        this.context1=context;
+        this.name1=nam;
+        this.images1=image;
+    }
+
+    @Override
+    public int getCount() {
+
+        return name1.length;
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return (view==(LinearLayout)object);
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+
+        inflater = (LayoutInflater) context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+       View ok = inflater.inflate(R.layout.imagepage, container, false);
+        TextView txt=(TextView) ok.findViewById(R.id.text);
+        txt.setText(name1[position]);
+        ImageView ima =(ImageView)ok.findViewById(R.id.imag);
+        ima.setImageResource(images1[position]);
+
+        container.addView(ok);
+        return ok;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+
+        container.removeView((LinearLayout)object);
+    }
+}
+
+
+imagepage.xml *******************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text"
+        android:text="Sajib.jpg"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"/>
+
+</LinearLayout>
+
+string.xml***************
+
+<resources>
+    <string name="app_name">ImageSliderAds</string>
+    <string-array name="nam">
+        <item>Sajib pal</item>
+        <item>Rajib pal</item>
+        <item>Sajib</item>
+    </string-array>
+</resources>
+
+
+Androidmanifest.xml******************
+
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+
+build gradle(mobile app)************
+
+compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.google.android.gms:play-services-ads:11.0.4'
+    compile 'com.github.chrisbanes:PhotoView:1.3.1'

@@ -1,0 +1,112 @@
+activity.xml ***********
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.contextuamenu.MainActivity">
+
+    <TextView
+        android:id="@+id/tex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Hello World!"
+       />
+
+
+</LinearLayout>
+
+Mainactivity.java**********
+
+package com.example.sajibpal.contextuamenu;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    TextView txt;
+
+   private ActionMode actionMode;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        txt= (TextView)findViewById(R.id.tex);
+        txt.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(actionMode!=null){
+
+                   return false;
+                }
+                actionMode=startSupportActionMode(callback);
+                return true;
+            }
+        });
+    }
+   private ActionMode.Callback callback= new ActionMode.Callback() {
+       @Override
+       public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+           mode.getMenuInflater().inflate(R.menu.item_layout,menu);
+           mode.setTitle("chose your option");
+           return true;
+       }
+
+       @Override
+       public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+           return false;
+       }
+
+       @Override
+       public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+           switch (item.getItemId()){
+               case R.id.share:
+                   Toast.makeText(MainActivity.this, "share selected", Toast.LENGTH_SHORT).show();
+                   mode.finish();
+                   return  true;
+               case R.id.ball:
+                   Toast.makeText(MainActivity.this, "ball selected", Toast.LENGTH_SHORT).show();
+                   mode.finish();
+                   return  true;
+               default:
+                   return false;
+           }
+
+       }
+
+       @Override
+       public void onDestroyActionMode(ActionMode mode) {
+           actionMode=null;
+       }
+   };
+}
+
+
+item_layout.xml**********
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/share"
+        android:title="option1"
+        android:icon="@drawable/ic_add_alert_black_24dp"
+        />
+    <item
+        android:id="@+id/ball"
+        android:title="option1"
+        android:icon="@drawable/ic_24dp"
+        />
+
+</menu>

@@ -1,0 +1,85 @@
+Activity_main. xml****
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/DarkCyan">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/large"
+            android:padding="20dp"
+            android:textSize="20sp"
+
+            />
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+String.xml***
+
+
+<resources>
+    <string name="app_name">My Application</string>
+   
+    <string name="large">What Can PHP Do? \n\n
+
+    PHP can generate dynamic page content
+    PHP can create, open, read, write, delete, and close files on the server
+    PHP can collect form data
+    PHP can send and receive cookies
+    PHP can add, delete, modify data in your database
+    PHP can be used to control user-access
+    PHP can encrypt data\n\n
+
+    With PHP you are not limited to output HTML. You can output images, PDF files, and even Flash movies. You can also output any text, such as XHTML and XML.
+    Why PHP?\n\n
+
+    PHP runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)
+    PHP is compatible with almost all servers used today (Apache, IIS, etc.)
+    PHP supports a wide range of databases
+    PHP is free. Download it from the official PHP resource: www.php.net
+    PHP is easy to learn and runs efficiently on the server side
+
+   </string>
+
+</resources>
+
+MainActivity.Java *****
+
+
+package com.example.sajibpal.myapplication;
+
+import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView txtname;
+    Typeface face;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.largestring);
+
+        txtname=(TextView) findViewById(R.id.text);
+
+        face=Typeface.createFromAsset(getAssets(),"cac_champagne.ttf");  
+        txtname.setTypeface(face);
+    }
+}

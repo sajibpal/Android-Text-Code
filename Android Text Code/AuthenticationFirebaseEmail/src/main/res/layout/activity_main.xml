@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.example.sajibpal.authenticationfirebase.MainActivity">
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/email"
+       android:inputType="textEmailAddress"
+       android:hint="Email addres"
+       android:textColor="#be1313"
+       />
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/password"
+       android:inputType="textPassword"
+       android:hint="password"
+       android:textColor="#be1313"
+       />
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/login"
+       android:text="Login"
+       style="@style/Animation.AppCompat.Dialog"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/signup"
+       android:paddingTop="10dp"
+       android:textColor="@color/colorAccent"
+       android:text="Are you register ? Sign up"/>
+   <ProgressBar
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/progres"
+       android:visibility="gone"
+       android:layout_gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Fragment</string>
+    <string-array name="name">
+
+        <item>Sajib pal</item>
+        <item>Rajib pal</item>
+        <item>Sabuj pal</item>
+        <item>Ankon pal</item>
+        <item>Shuvro pal</item>
+        <item>Rony debnath</item>
+        <item>Sagor debnath</item>
+        <item>Sansoad pal</item>
+        <item>Himal das</item>
+    </string-array>
+    <string name="no">
+        Name:Sajib pal\n
+        age:24\n
+        Mobile:01926101829
+    </string>
+
+    <string name="ok">
+        Name:Rajib pal\n
+        age:28\n
+        Mobile:017656646455
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">ExpendableListView</string>
+    <string-array name="team">
+        <item>Bangladesh</item>
+        <item>India</item>
+        <item>Austrila</item>
+    </string-array>
+
+    <string-array name="coun">
+      <item>
+          The Bangladesh national cricket team, nicknamed The Tigers,
+          is administered by the Bangladesh Cricket Board. Bangladesh
+          is a full member of the International Cricket Council with
+          Test and One Day International status. Wikipedia\n\n
+         Coach: Steve Rhodes\n
+         Location: Bangladesh\n
+         Captains: Shakib Al Hasan, Mashrafe Mortaza, Mahmudullah
+      </item>
+
+       <item>
+           The India national cricket team, also known as Team India and
+           Men in Blue, is governed by the Board of Control for Cricket
+           in India, and is a full member of the International Cricket
+           Council with Test, One Day International and Twenty20 International status.\n\n
+           Captain: Virat Kohli Trending\n
+           Location: India\n
+           Coaches: Ravi Shastri (Head coach), Ramakrishnan Sridhar, Sanjay Bangar, Bharat Arun\n
+           Arenas/Stadiums: Wankhede Stadium, Eden Gardens, MORE\n
+           Nicknames: Team India, Men in Blue
+
+       </item>
+        <item>
+           The Australia national cricket team is the joint oldest
+            team in Test cricket history, having played in the first
+            ever Test match in 1877.\n\n
+            Captain: Tim Paine\n
+            Coach: Justin Langer (Head coach)\n
+            Location: Australia
+            Arenas/Stadiums: Melbourne Cricket Ground, Sydney Cricket Ground. \n
+            Nicknames: Baggy Greens, Aussies, The Invincibles
+        </item>
+    </string-array>
+
+</resources>

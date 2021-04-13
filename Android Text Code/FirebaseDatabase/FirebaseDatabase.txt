@@ -1,0 +1,528 @@
+activity_main.xml *************
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    tools:context="com.example.sajibpal.firebasedatabase.MainActivity">
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/name"
+       android:hint="Enter your name"
+       android:textColor="@color/colorAccent"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/age"
+        android:hint="Enter your age"
+        android:textColor="@color/colorAccent"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:text="Save"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butt"
+        android:text="show"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+</LinearLayout>
+
+
+MainActivity.java **********
+
+
+ package com.example.sajibpal.firebasedatabase;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText name1,age1;
+    Button btn,btn1;
+    DatabaseReference databaseReference;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        name1= (EditText) findViewById(R.id.name);
+        age1= (EditText) findViewById(R.id.age);
+        btn= (Button) findViewById(R.id.button);
+        btn1= (Button) findViewById(R.id.butt);
+
+        databaseReference= FirebaseDatabase.getInstance().getReference("student");
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveData();
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Showdata();
+            }
+        });
+    }
+
+    public void SaveData(){
+
+        String name=name1.getText().toString().trim();
+        String age=age1.getText().toString().trim();
+
+        String key=databaseReference.push().getKey();
+
+        Student student=new Student(name,age);
+
+        databaseReference.child(key).setValue(student);
+        Toast.makeText(this, "Data add Sucessfully", Toast.LENGTH_SHORT).show();
+        name1.setText("");
+        age1.setText("");
+    }
+
+    public  void Showdata(){
+
+        Intent intent=new Intent(MainActivity.this,Details.class);
+        startActivity(intent);
+    }
+}
+
+
+Student.java *********
+
+ package com.example.sajibpal.firebasedatabase;
+
+/**
+ * Created by sajib pal on 4/12/2019.
+ */
+
+public class Student {
+
+    String name;
+    String age;
+    String key;
+
+    public Student(){
+
+    }
+
+
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+
+    @Exclude
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+
+    public Student(String name, String age) {
+
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+}
+
+
+activity_details ***********
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.example.sajibpal.firebasedatabase.Details">
+
+     <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/progress"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/progress"
+        android:hint="enter name" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list"
+        android:divider="#2169de"
+        android:dividerHeight="1dp">
+
+    </ListView>
+
+</LinearLayout>
+
+
+
+//Total Update,delete methode
+
+Details.java************
+
+package com.example.sajibpal.firebasedatabase;
+
+
+
+import android.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Details extends AppCompatActivity {
+
+    ListView listView;
+   // DatabaseReference dataReference;
+    List<Student> studentList1;
+    CustomAdapter adapter;
+    Query query;
+    EditText search;    
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_details);
+
+
+         //for firebase database search*************
+
+        search= (EditText) findViewById(R.id.edit);
+        search.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+              query = FirebaseDatabase.getInstance().getReference("student")
+                .orderByChild("name").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+
+                onStart();
+        }
+
+    });
+
+//************************* end search code *************
+
+
+       // dataReference= FirebaseDatabase.getInstance().getReference("student"); **query na lagle ata dite hobe
+
+            query=FirebaseDatabase.getInstance().getReference("student").limitToLast(2);
+                  //** .orderByChild("name").limitToLast("sajib");**//
+
+        studentList1=new ArrayList<>();
+        adapter=new CustomAdapter(Details.this,studentList1);
+
+        listView= (ListView)findViewById(R.id.list);
+
+
+        /*for show data bottom  list
+        listView.setStackFromBottom(true); */
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Student selecteditem = studentList1.get(position);
+                final String key=selecteditem.getKey();
+                showUpdateDeleteDialog(key,selecteditem.getAge(), selecteditem.getName());
+                return true;
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                studentList1.clear();
+
+                for(DataSnapshot dataSnapshot1 :dataSnapshot.getChildren()){
+
+                    Student student=dataSnapshot1.getValue(Student.class);
+                    student.setKey(dataSnapshot1.getKey());
+                    studentList1.add(student);
+                }
+
+                listView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(Details.this, "Database Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+        super.onStart();
+    }
+
+//update and delete dialog
+
+    private void showUpdateDeleteDialog(final String keyid ,String age, String name) {
+
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.updatedata, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextName = (EditText) dialogView.findViewById(R.id.name);
+        final EditText editTextage = (EditText) dialogView.findViewById(R.id.age);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.update);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.delete);
+
+        editTextage.setText(age);
+        editTextName.setText(name);
+
+        dialogBuilder.setTitle(name);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextName.getText().toString().trim();
+                String age =editTextage.getText().toString().trim();
+
+
+                if (!name.isEmpty()) {
+                    updateArtist(keyid ,name, age);
+                    b.dismiss();
+                }
+            }
+        });
+
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteArtist(keyid);
+                b.dismiss();
+
+            }
+        });
+    }
+
+ //update methode
+
+    private boolean updateArtist(String id,String name, String age) {
+        //getting the specified artist reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("student").child(id);
+
+        //updating artist
+        Student artist = new Student(name,age);
+        dR.setValue(artist);
+        Toast.makeText(getApplicationContext(), "Data Updated", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    //Delete methode
+
+    private boolean deleteArtist(String id) {
+        //getting the specified artist reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("student").child(id);
+
+        dR.removeValue();
+        Toast.makeText(getApplicationContext(), "Data Deleted", Toast.LENGTH_LONG).show();
+        return true;
+    }
+}
+
+
+
+//show for ListView Data
+
+CustomAdapter.java ************
+
+ package com.example.sajibpal.firebasedatabase;
+
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import java.util.List;
+
+/**
+ * Created by sajib pal on 4/12/2019.
+ */
+
+public class CustomAdapter extends ArrayAdapter<Student> {
+
+    Activity context;
+    List<Student> studentList;
+
+    public CustomAdapter(Activity context, List<Student> studentList) {
+        super(context,R.layout.list_item,studentList);
+
+        this.context = context;
+        this.studentList = studentList;
+    }
+
+
+    public View getView(int position,View convertView,ViewGroup parent) {
+
+        LayoutInflater inflater=context.getLayoutInflater();
+        View view=inflater.inflate(R.layout.list_item,null,true);
+
+        Student student=studentList.get(position);
+
+        TextView t1= (TextView) view.findViewById(R.id.txt);
+        TextView t2= (TextView) view.findViewById(R.id.txt1);
+
+        t1.setText("Name : "+student.getName());
+        t2.setText("Age : "+student.getAge());
+
+        return view;
+    }
+}
+
+updatedata.xml***********
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/age"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/update"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/delete"/>
+
+</LinearLayout>
+
+
+
+list_item.xml **-******
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt"
+        android:layout_marginTop="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="Name : sajib pal"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt1"
+        android:layout_marginTop="5dp"
+        android:textColor="#150404"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Age : 25"/>
+
+</LinearLayout>
+
+
+Build Gradle(Module app)***************
+
+dependencies {
+  
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.google.firebase:firebase-auth:11.0.4'
+    compile 'com.google.firebase:firebase-storage:11.0.4'
+    compile 'com.google.firebase:firebase-database:11.0.4'
+   
+}
+
+
+
+apply plugin: 'com.google.gms.google-services'

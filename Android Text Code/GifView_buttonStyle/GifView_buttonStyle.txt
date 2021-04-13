@@ -1,0 +1,119 @@
+activity_main.xml ************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.gifview.MainActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/giphy"/>
+
+    <Button
+        android:id="@+id/angry_btn"
+        android:text="Sajib"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:layout_marginTop="15dp"
+        android:textSize="30sp"
+        android:layout_width="144dp"
+        android:layout_height="49dp"
+        android:background="@drawable/buttoncolor"
+        />
+
+</LinearLayout>
+
+
+buttocolor.xml(drawable) ********
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
+    <corners
+        android:radius="81dp"
+        />
+    <gradient
+        android:angle="45"
+        android:centerX="35%"
+        android:centerColor="#2831A8"
+        android:startColor="#E8E8E8"
+        android:endColor="#C2C6FF"
+        android:type="linear"
+        />
+    <padding
+        android:left="0dp"
+        android:top="0dp"
+        android:right="0dp"
+        android:bottom="0dp"
+        />
+    <size
+        android:width="144dp"
+        android:height="49dp"
+        />
+    <stroke
+        android:width="3dp"
+        android:color="#EBFFFC"
+        />
+</shape>
+
+
+build.gridle(project)************
+
+  // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral() ******
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()  ********
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+  
+
+
+build.gridle(mobile app) ************
+
+ compile 'com.android.support:appcompat-v7:25.3.1'
+ compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
+
+
+MainActivity.java  ***********
+
+
+package com.example.sajibpal.gifview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+}

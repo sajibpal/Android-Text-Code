@@ -1,0 +1,115 @@
+activity_main.xml******
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20sp"
+    tools:context="com.example.sajibpal.spinner.MainActivity">
+
+   <Spinner
+       android:id="@+id/spiner"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:dropDownSelector="#6a86ea"
+       android:spinnerMode="dialog" >
+
+   </Spinner>
+    <Button
+        android:id="@+id/button"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        android:onClick="show"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+
+MainActivity.java *****
+
+ 
+package com.example.sajibpal.spinner;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Spinner pinner;
+    Button btn;
+    TextView txt;
+    String[] name;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        pinner=(Spinner) findViewById(R.id.spiner);
+        btn=(Button) findViewById(R.id.button);
+        txt=(TextView) findViewById(R.id.text);
+        name=getResources().getStringArray(R.array.data);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this,R.layout.information,R.id.view,name);
+        pinner.setAdapter(adapter);
+    }
+    public  void  show(View g){
+
+        String value=pinner.getSelectedItem().toString();
+        txt.setText(value);
+    }
+}
+
+
+information.xml*****
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c2ba7d">
+
+    <TextView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Bangladesh"
+        />
+
+</LinearLayout>
+
+
+string.xml******
+
+<resources>
+    <string name="app_name">Spinner</string>
+    <string-array name="data">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+        <item>Maldip</item>
+    </string-array>
+</resources>

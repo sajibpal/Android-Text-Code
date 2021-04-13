@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.poweroffanddoubleback.MainActivity"
+    >
+
+</LinearLayout>
+
+
+package com.example.sajibpal.poweroffanddoubleback;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+     
+     long backpresstime;
+     Toast backToast;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    public void onBackPressed(){
+
+        if(backpresstime+2000>System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else{
+            backToast=Toast.makeText(this, "Press back again to Exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backpresstime=System.currentTimeMillis();
+
+    }
+}

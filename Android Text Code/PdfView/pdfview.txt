@@ -1,0 +1,48 @@
+activity_main.xml**********
+
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pdf"/>
+
+
+MainActivity.java*****
+
+package com.example.sajibpal.pdfview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.github.barteksc.pdfviewer.PDFView;
+
+public class MainActivity extends AppCompatActivity {
+
+    PDFView pdfview;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        pdfview= (PDFView) findViewById(R.id.pdf);
+        pdfview.fromAsset("visa_policy.pdf").load();
+
+    }
+}
+
+******app/new/folder/asseet folder click kore folder make korte hobe asserts vittor pdf file paste korte hobe ******
+
+
+dependencies {
+
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.github.barteksc:android-pdf-viewer:2.3.0'
+
+}

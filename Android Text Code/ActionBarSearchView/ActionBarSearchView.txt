@@ -1,0 +1,150 @@
+activity_main.xml *****
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4db7f1"
+    tools:context="com.example.sajibpal.actionbarsearch.MainActivity">
+
+
+    <ListView
+        android:listSelector="#065b89"
+        android:id="@+id/list"
+        android:dividerHeight="1dp"
+        android:divider="#ff22"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>
+
+
+MainActivity.java *****
+
+
+package com.example.sajibpal.actionbarsearch;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView vlist;
+    String[] coun;
+    ArrayAdapter<String> adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        vlist=(ListView) findViewById(R.id.list);
+
+        coun=getResources().getStringArray(R.array.country);
+        adapter=new ArrayAdapter<String>(MainActivity.this,R.layout.actionbar,R.id.txt,coun);
+        vlist.setAdapter(adapter);
+
+        vlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String name=adapter.getItem(position);
+                Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_layout,menu);
+
+        MenuItem menuItem=menu.findItem(R.id.name);
+        SearchView show=(SearchView) menuItem.getActionView();
+        show.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+}
+
+
+actionbar.xml ********
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt"
+        android:padding="6dp"
+        android:textColor="#192c96"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
+
+string.xml ******
+
+<resources>
+    <string name="app_name">ActionBarSearch</string>
+    <string-array name="country">
+        <item>Bangladesh</item>
+        <item>Nepal</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Butan</item>
+        <item>Shrilanka</item>
+        <item>Austulia</item>
+        <item>Maldip</item>
+    </string-array>
+</resources>
+
+
+manu_layout.xml *******
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+
+        android:id="@+id/name"
+        android:title="Search"
+        android:icon="@mipmap/ic_launcher"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"
+
+        />
+
+</menu>

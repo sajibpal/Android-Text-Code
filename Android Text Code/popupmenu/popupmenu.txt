@@ -1,0 +1,94 @@
+activity_main.xml *****************
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="com.example.sajibpal.popupmenu.MainActivity">
+<Button
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="menu"
+    android:text="popup"/>
+
+</LinearLayout>
+
+MainActivity.java***********
+
+ package com.example.sajibpal.popupmenu;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.PopupMenu; *************
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+    Button btn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn=(Button)findViewById(R.id.button);
+    }
+    public void menu(View v) {
+
+        PopupMenu popmenu= new PopupMenu(this,v);
+        popmenu.inflate(R.menu.menu_item);
+        popmenu.show();
+        popmenu.setOnMenuItemClickListener(this);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.share:
+                Toast.makeText(this,"Share Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.delete:
+                Toast.makeText(this,"Delete Selected",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return false;
+        }
+    }
+}
+
+menu_item.xml ***********
+
+ <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:id="@+id/share"
+      android:title="Share"/>
+  <item
+      android:id="@+id/delete"
+      android:title="Delete"/>
+</menu>
+
+
+style.xml **********
+  
+ <resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:popupMenuStyle">@style/popupMenuStyle</item>
+    </style>
+    <style name="popupMenuStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:itemBackground">#87e197</item>
+    </style>
+</resources>

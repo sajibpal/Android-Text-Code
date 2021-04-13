@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*"
+    tools:context="com.example.sajibpal.tablelayout.MainActivity">
+
+    <TableRow
+        android:layout_marginTop="20dp">
+
+       <TextView
+           android:layout_height="wrap_content"
+           android:text="Student Infomation"
+           android:layout_gravity="center_horizontal"
+           android:layout_span="3"
+           android:textStyle="bold"
+           android:textSize="20sp"
+           android:textColor="@color/colorAccent"
+        />
+    </TableRow>
+    <TableRow
+    android:layout_marginTop="10dp"
+    android:background="#4cafde"
+    >
+    <TextView
+        android:id="@+id/text"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Name"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/text1"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Id"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/text2"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Dpart"
+        android:textSize="15sp"
+        />
+
+</TableRow>
+<TableRow
+    >
+
+<TextView
+    android:id="@+id/txt1"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:text="Sajib pal"
+    android:textSize="15sp"
+    />
+<TextView
+    android:id="@+id/txt2"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:text="154045"
+    android:textSize="15sp"
+    />
+
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="CSE"
+        android:textSize="15sp"
+        />
+</TableRow>
+</TableLayout>

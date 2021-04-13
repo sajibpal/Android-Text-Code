@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Country</string>
+    <string name="bd">
+        The national flag of Bangladesh was adoptedofficially on 17 January 1972.It consists
+        of a red disc on top of a green field,
+        offset slightly toward the hoist so that
+        it appears centred when the flag is flying.\n\n
+        Use: National flag\n
+        Adopted on: January 17, 1972\n
+        Proportion: 3:5\n
+        Country: Bangladesh\n
+        Designed by: Quamrul Hassan\n
+    </string>
+    <string name="india">
+        The National Flag of India is a horizontal rectangular tricolour of
+        India saffron, white and India green; with the Ashoka Chakra, a 24-spoke wheel, in navy blue at its centre.\n\n
+        Use: National flag\n
+        Adopted on: July 22, 1947\n
+        Proportion: 2:3\n
+        Designed by: Pingali Venkayya\n
+        Country: India
+    </string>
+</resources>

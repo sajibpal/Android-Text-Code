@@ -1,0 +1,391 @@
+activity_main.xml ***********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.databaselistview.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name :"/>
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id :"/>
+
+        <EditText
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="save"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="see"
+        android:text="show" />
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="update"
+        android:text="Update" />
+    <Button
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="delete"
+        android:text="Delete" />
+
+</LinearLayout>
+
+
+MainActivity.java ************
+
+ package com.example.sajibpal.databaselistview;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.InputStreamReader;
+
+public class MainActivity extends AppCompatActivity {
+
+    Connection connection;
+    EditText txt,txt1;
+    Button btn,btn1,btn2,btn3;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        connection= new Connection(this);
+        SQLiteDatabase sqLiteDatabase=connection.getWritableDatabase();
+
+        txt= (EditText) findViewById(R.id.text);
+        txt1= (EditText) findViewById(R.id.text1);
+        btn= (Button) findViewById(R.id.button);
+        btn1= (Button) findViewById(R.id.button1);
+        btn2=(Button)findViewById(R.id.button2);
+        btn3=(Button)findViewById(R.id.button3);
+    }
+
+    public  void save(View v){
+
+        String name=txt.getText().toString();
+
+        if(v.getId()==R.id.button){
+
+            long rowid=connection.insetData(name);
+
+            if(rowid==-1){
+
+                Toast.makeText(this, "Data not add Successfully", Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+                Toast.makeText(this, "Data add Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    //database display data
+
+    public  void see(View v){
+
+        if(v.getId()==R.id.button1){
+
+            Intent intent=new Intent(MainActivity.this,ListActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
+    //database update data
+
+    public  void update(View v){
+        String name=txt.getText().toString();
+        String id=txt1.getText().toString();
+
+
+        if(v.getId()==R.id.button2){
+
+            boolean isupdate=connection.updatedata(id,name);
+
+            if(isupdate==true){
+
+                Toast.makeText(this, "Update  Successfully", Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+                Toast.makeText(this, "Update not Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+//database delete data
+
+    public  void delete(View j){
+
+        String id=txt1.getText().toString();
+
+        if(j.getId()==R.id.button3){
+
+            int val=connection.deletedata(id);
+            if (val > 0) {
+
+                Toast.makeText(this, "data delete Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(this, "data delete not Successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+
+
+Connnection.java**************
+
+  package com.example.sajibpal.databaselistview;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+/**
+ * Created by sajib pal on 10/5/2018.
+ */
+
+public class Connection extends SQLiteOpenHelper {
+
+    private  static final String DATABASE_NAME="Data.db";
+    private  static final String TABLE_NAME="inform";
+    private  static final  int VERSION_NUMBER=2;
+    private  static final String ID="_id";
+    private  static final String NAME="Name";
+    private  static  final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+ "("+ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+NAME+" VARCHAR(25));";
+    private static  final  String DROP_TABLE="DROP TABLE IF EXISTS "+TABLE_NAME;
+    private  static final String SHOW_DATA="SELECT *FROM "+TABLE_NAME;
+    private Context context1;
+
+    public Connection(Context context) {
+        super(context, DATABASE_NAME, null, VERSION_NUMBER);
+        this.context1=context;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        try{
+            db.execSQL(CREATE_TABLE);
+            Toast.makeText(context1, "Database is create", Toast.LENGTH_LONG).show();
+
+        }catch (Exception e){
+
+            Toast.makeText(context1, "Exception :"+e , Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        try{
+
+            Toast.makeText(context1, "onUpdate is called :" , Toast.LENGTH_LONG).show();
+            db.execSQL(DROP_TABLE);
+            onCreate(db);
+
+        }
+        catch (Exception e){
+
+            Toast.makeText(context1, "Exception :"+e , Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+    public  long  insetData(String name){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(NAME,name);
+        long rowid=data.insert(TABLE_NAME,null,values);
+
+        return rowid;
+    }
+    //database display function
+
+    public Cursor displaydata(){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        Cursor cursor= data.rawQuery(SHOW_DATA,null);
+
+        return cursor;
+    }
+
+    //database update function
+
+    public boolean updatedata(String id,String name){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(ID,id);
+        values.put(NAME,name);
+
+        data.update(TABLE_NAME,values,ID+" =?",new String[]{id});
+
+        return true;
+    }
+    //database delete function
+    public  int deletedata(String id){
+
+        SQLiteDatabase data=this.getWritableDatabase();
+        int value= data.delete(TABLE_NAME,ID+" =?",new String[]{id});
+        return  value;
+    }
+}
+
+
+activity_list.xml ***********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.databaselistview.ListActivity">
+
+    <ListView
+        android:listSelector="#065b89"
+        android:id="@+id/list"
+        android:dividerHeight="1dp"
+        android:divider="#ff22"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>
+
+
+ListActivity.java *********
+
+package com.example.sajibpal.databaselistview;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class ListActivity extends AppCompatActivity {
+
+    ListView listView;
+    Connection connection;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+
+        connection= new Connection(this);
+        SQLiteDatabase sqLiteDatabase=connection.getWritableDatabase();
+
+        listView= (ListView) findViewById(R.id.list);
+        loaddata();
+    }
+   public  void loaddata(){
+
+       final ArrayList<String> listdata=new ArrayList<>();
+        Cursor cursor=connection.displaydata();
+
+            if(cursor.getCount()==0){
+
+                Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
+            }
+
+            while (cursor.moveToNext()) {
+
+            listdata.add(cursor.getString(0)+"\t"+cursor.getString(1));
+            }
+       ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.list,R.id.txt,listdata);
+       listView.setAdapter(adapter);
+
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+               String  loc=parent.getItemAtPosition(position).toString();
+               Toast.makeText(ListActivity.this, "Selected value"+loc, Toast.LENGTH_SHORT).show();
+           }
+       });
+   }
+}
+
+
+
+list.xml ***************
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txt"
+        android:padding="6dp"
+        android:textColor="#192c96"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+</LinearLayout>

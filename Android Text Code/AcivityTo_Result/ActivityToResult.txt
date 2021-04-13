@@ -1,0 +1,129 @@
+activity-main.xml ****
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.resultshowotheractivity.MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO Next"
+        android:onClick="next"/>
+    <TextView
+        android:id="@+id/text"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+MainActivity.java ****
+
+package com.example.sajibpal.resultshowotheractivity;
+
+import android.content.Intent;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    TextView txt;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn=(Button) findViewById(R.id.button);
+        txt=(TextView)findViewById(R.id.text);
+
+
+    }
+    public  void next(View b){
+
+        Intent intent=new Intent(MainActivity.this,Activity2.class);
+        startActivityForResult(intent,2);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+             String ok = data.getStringExtra("name");
+             txt.setText(ok);
+    }
+}
+
+activity2.xml ****
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.sajibpal.resultshowotheractivity.Activity2">
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go back First Activity"
+        android:onClick="show"/>
+
+</LinearLayout>
+
+Activity2.java *****
+
+
+package com.example.sajibpal.resultshowotheractivity;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class Activity2 extends AppCompatActivity {
+     Button btn;
+    TextView txt;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+
+        btn=(Button) findViewById(R.id.button);
+        txt=(TextView) findViewById(R.id.text);
+    }
+   public void show(View h){
+
+       String value=txt.getText().toString();
+       Intent intent=new Intent(Activity2.this,MainActivity.class);
+       intent.putExtra("name",value);
+       setResult(1,intent);
+       finish();
+
+   }
+}
+

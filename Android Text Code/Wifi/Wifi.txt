@@ -1,0 +1,92 @@
+activity_main.xml ************
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.wifi.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:onClick="wifion"
+        android:text="Wifi On"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1"
+        android:text="Wifi Off"
+        android:onClick="wifioff"/>
+
+
+</LinearLayout>
+
+
+MainActivity.java ************
+
+
+package com.example.sajibpal.wifi;
+
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    WifiManager manager;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+       manager= (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    }
+
+    public  void wifion(View n){
+
+        manager.setWifiEnabled(true);
+
+    }
+
+    public  void wifioff(View n){
+
+     manager.setWifiEnabled(false);
+    }
+
+}
+
+
+AndroidManifest.xml ************
+
+ <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sajibpal.wifi">
+   
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

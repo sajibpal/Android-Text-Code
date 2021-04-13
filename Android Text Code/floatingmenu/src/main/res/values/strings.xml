@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FloatingContextMenu</string>
+    <string-array name="country">
+        <item>Bangladesh</item>
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Nepal</item>
+        <item>Vuytan</item>
+        <item>Austrila</item>
+        <item>Aumerica</item>
+        <item>Usa</item>
+
+    </string-array>
+
+    <string name="del">Delete</string>
+    <string name="hel">Help</string>
+    <string name="sha">Share</string>
+</resources>

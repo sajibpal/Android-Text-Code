@@ -1,0 +1,123 @@
+activity_main *********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout"
+    android:gravity="center"
+    tools:context="com.example.sajibpal.sharesettingstore.MainActivity">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#e2d8d8"
+      android:text="Background color"/>
+</LinearLayout>
+
+menu_item.xml ********
+
+  <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:title="Red color"
+      android:id="@+id/red"
+      app:showAsAction="never"
+      />
+    <item
+        android:title="Dark color"
+        android:id="@+id/dark"
+        app:showAsAction="never"
+        />
+    <item
+        android:title="Blue color"
+        android:id="@+id/blue"
+        app:showAsAction="never"
+        />
+
+</menu>
+
+color.xml ******
+
+  <?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="redcolor">#dc4444</color>
+    <color name="darkcolor">#282525</color>
+    <color name="bluecolor">#2f69ab</color>
+</resources>
+
+
+MainActivity.java ********
+
+ package com.example.sajibpal.sharesettingstore;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
+
+public class MainActivity extends AppCompatActivity {
+
+    LinearLayout linear;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        linear= (LinearLayout) findViewById(R.id.layout);
+
+        if(loadcolor()!=getResources().getColor(R.color.colorPrimary)){
+
+            linear.setBackgroundColor(loadcolor());
+        }
+    }                           
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.red){
+
+         linear.setBackgroundColor(getResources().getColor(R.color.redcolor));
+         storecolor(getResources().getColor(R.color.redcolor));
+        }
+        if(item.getItemId()==R.id.dark){
+
+            linear.setBackgroundColor(getResources().getColor(R.color.darkcolor));
+            storecolor(getResources().getColor(R.color.darkcolor));
+        }
+        if(item.getItemId()==R.id.blue){
+
+            linear.setBackgroundColor(getResources().getColor(R.color.bluecolor));
+            storecolor(getResources().getColor(R.color.bluecolor));
+        }
+        return super.onOptionsItemSelected(item);
+    }
+  public void storecolor(int color){
+
+      SharedPreferences share=getSharedPreferences("color", Context.MODE_PRIVATE);
+      SharedPreferences.Editor editor=share.edit();
+      editor.putInt("change",color);
+      editor.commit();
+   }
+   public  int loadcolor(){
+
+       SharedPreferences share=getSharedPreferences("color", Context.MODE_PRIVATE);
+       int color=share.getInt("change",getResources().getColor(R.color.colorPrimary));
+       return color;
+   }
+}

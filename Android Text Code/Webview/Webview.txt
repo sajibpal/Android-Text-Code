@@ -1,0 +1,93 @@
+activity-main.xml*****
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.webview.MainActivity">
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+    
+</LinearLayout>
+
+MainActivity.java ***
+
+package com.example.sajibpal.webview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class MainActivity extends AppCompatActivity {
+
+    WebView view;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        view=(WebView) findViewById(R.id.web);
+        WebSettings seeting =view.getSettings();
+        seeting.setJavaScriptEnabled(true);
+
+        view.setWebViewClient(new WebViewClient());
+
+        // view.setWebChromeClient(new WebChromeClient()); **for youtube play and setwebviewClient remove hobe 
+
+        view.loadUrl("https://www.w3schools.com");
+
+     /*
+        view=(WebView) findViewById(R.id.webs);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.w3schools.com")); ***webbrower show website only atotuku dile  hobe
+        startActivity(intent);
+    */
+
+    }
+
+    public void onBackPressed(){
+
+    if(view.canGoBack()){
+
+        view.goBack();
+    }
+    else{
+       super.onBackPressed();
+     }
+
+    }
+
+}
+
+Manifest.xml****
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sajibpal.webview">
+    
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/sajib_duet"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/sajib_duet"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

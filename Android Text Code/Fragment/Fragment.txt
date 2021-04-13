@@ -1,0 +1,218 @@
+activity_main.xml ********
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    tools:context="com.example.sajibpal.fragment.MainActivity">
+  <LinearLayout
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:layout_height="match_parent">
+
+      <ListView
+          android:id="@+id/view"
+          android:listSelector="#4160b4"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:divider="#0e7cb7"
+          android:dividerHeight="1dp">
+
+      </ListView>
+  </LinearLayout>
+
+   <LinearLayout
+       android:layout_weight="2"
+       android:layout_width="0dp"
+       android:layout_height="match_parent">
+
+       <fragment
+           android:name="com.example.sajibpal.fragment.Rajib"
+           android:id="@+id/fragmentid"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </fragment>
+
+   </LinearLayout>
+
+
+</LinearLayout>
+
+MainActivity.java ********
+
+package com.example.sajibpal.fragment;
+
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView=(ListView) findViewById(R.id.view);
+        String[] name=getResources().getStringArray(R.array.name);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,name);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if(position==0){
+
+                  Fragment fragment=new Sajib();
+                    FragmentManager fragmentManager=getFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentid,fragment);
+                    fragmentTransaction.commit();
+
+                }
+                if(position==1){
+
+                  Fragment  fragment=new Rajib();
+                  getFragmentManager().beginTransaction().replace(R.id.fragmentid,fragment).commit(); 
+
+                }
+            }
+        });
+    }
+}
+
+
+activity_sajib.xml*******
+ 
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3781be"
+    tools:context="com.example.sajibpal.fragment.Sajib">
+
+    <!-- TODO: Update blank fragment layout -->
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:gravity="center_horizontal"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           android:layout_width="190dp"
+           android:layout_height="180dp"
+           android:src="@drawable/sajib_duet"
+           android:scaleType="fitXY"/>
+       <TextView
+           android:textSize="15sp"
+           android:textStyle="bold"
+           android:layout_marginTop="8dp"
+           android:text="@string/no"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           />
+   </LinearLayout>
+</FrameLayout>
+
+
+
+sajib.java ********
+
+package com.example.sajibpal.fragment;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class Sajib extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_sajib, container, false);
+    }
+
+}
+
+
+activity_rajib.xml ********
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4cb7ca"
+    tools:context="com.example.sajibpal.fragment.Rajib">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="180dp"
+            android:src="@drawable/rajib"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:id="@+id/tx1"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:text="@string/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</FrameLayout>
+
+
+Rajib.java *****
+
+package com.example.sajibpal.fragment;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class Rajib extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_rajib, container, false);
+    }
+
+
+
+}
+
+

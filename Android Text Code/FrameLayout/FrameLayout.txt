@@ -1,0 +1,80 @@
+activity_main.xml ********
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sajibpal.framlayout.MainActivity">
+
+     <ImageView
+         android:id="@+id/image"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:src="@drawable/sajib_duet"
+         android:onClick="show"
+         android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rajibpal"
+        android:visibility="gone"
+        android:onClick="show"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sajib"
+        android:visibility="gone"
+        android:onClick="show"
+        android:scaleType="fitXY"/>
+</FrameLayout>
+
+
+
+MainActivity.java *******
+
+
+package com.example.sajibpal.framlayout;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+
+   ImageView imageView, imageView1,imageView2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView=(ImageView) findViewById(R.id.image);
+        imageView1=(ImageView) findViewById(R.id.image1);
+        imageView2=(ImageView) findViewById(R.id.image2);
+
+    }
+    public  void show(View v){
+
+       if(v.getId()==R.id.image) {
+
+        imageView.setVisibility(v.GONE);
+        imageView1.setVisibility(v.VISIBLE);
+       }
+       if(v.getId()==R.id.image1) {
+
+           imageView1.setVisibility(v.GONE);
+           imageView2.setVisibility(v.VISIBLE);
+       }
+       else {
+
+           imageView2.setVisibility(v.GONE);
+           imageView.setVisibility(v.VISIBLE);
+       }
+    }
+
+}

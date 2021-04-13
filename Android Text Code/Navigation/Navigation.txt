@@ -1,0 +1,452 @@
+activity_main.xml *************
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/draw"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.sajibpal.navigationdrawer.MainActivity"
+    tools:openDrawer="start">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/tool"
+            android:background="@color/colorAccent"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:elevation="4dp"
+            />
+
+       <FrameLayout
+           android:id="@+id/frame"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+               android:layout_gravity="center"
+           android:text="Home Page"
+           android:textSize="20sp"/>
+
+
+       </FrameLayout>
+
+    </LinearLayout>
+
+   <android.support.design.widget.NavigationView
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:id="@+id/nav"
+       android:layout_gravity="start"
+       app:headerLayout="@layout/header"
+       app:menu="@menu/menu_item"
+       />
+
+
+</android.support.v4.widget.DrawerLayout>
+
+
+header.xml ***********
+ 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="@color/colorAccent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="100dp"
+        android:src="@drawable/sajib_duet" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8sp"
+        android:text="sajib pal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#f5f0f0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sajibpal20@gmail.com"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#f5f0f0" />
+</LinearLayout>
+
+
+MainActivity.java ***********
+
+
+package com.example.sajibpal.navigationdrawer;
+
+
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
+public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{
+    DrawerLayout drawer;
+    Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+         toolbar=(Toolbar) findViewById(R.id.tool);
+        setSupportActionBar(toolbar);
+
+        drawer=(DrawerLayout) findViewById(R.id.draw);
+        NavigationView navigation=(NavigationView) findViewById(R.id.nav);
+        navigation.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,
+                R.string.open_navigation,R.string.close_navigation);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+    public  void onBackPressed(){
+
+      if(drawer.isDrawerOpen(GravityCompat.START)){
+
+          drawer.closeDrawer(GravityCompat.START);
+      }
+      else{
+          super.onBackPressed();
+      }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.message:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame,new MessageFragmeni()).commit();
+                break;
+            case R.id.mail:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame,new MailFragmeni()).commit();
+                break;
+            case R.id.person:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragmeni()).commit();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+}
+
+
+message.xml  ************
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#3f569f">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Message"
+       android:textSize="20sp"/>
+
+
+</LinearLayout>
+
+
+MessageFragment.java  ************
+
+
+package com.example.sajibpal.navigationdrawer;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+/**
+ * Created by sajib pal on 9/23/2018.
+ */
+
+public class MessageFragmeni extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+         View view=inflater.inflate(R.layout.message,container,false);
+
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plane");
+
+            String subject="Text Message";
+            String body="Hi this my first app \n Test is now ok ";
+
+            intent.putExtra(Intent.EXTRA_SUBJECT,subject);
+            intent.putExtra(Intent.EXTRA_TEXT,body);
+            startActivity(intent.createChooser(intent,"Share with"));
+
+        return view;
+    }
+
+
+}
+
+
+
+
+mail.xml ************
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#7f3f9f">
+
+   <Button
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/button"
+       android:text="Mail"/>
+
+</LinearLayout>
+
+
+MailFragment.java ************
+
+package com.example.sajibpal.navigationdrawer;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+/**
+ * Created by sajib pal on 9/23/2018.
+ */
+
+public class MailFragmeni extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view=inflater.inflate(R.layout.mail,container,false);
+
+        Button btn =(Button) view.findViewById(R.id.button);
+
+         btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                if(v.getId()==R.id.button) {
+
+                    Toast.makeText(getActivity(), "Hi sajib", Toast.LENGTH_SHORT).show();
+                }
+             }
+         });
+        return view;
+
+    }
+}
+
+
+profile.xml  ***************
+
+ 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#3f9f95">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Profile box"/>
+
+</LinearLayout>
+
+
+ProfilFragment.java    *************
+
+package com.example.sajibpal.navigationdrawer;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by sajib pal on 9/23/2018.
+ */
+
+public class ProfileFragmeni extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.profile,container,false);
+    }
+}
+
+
+string.xml   *********
+
+<resources>
+    <string name="app_name">NavigationDrawer</string>
+    <string name="open_navigation">Open Navigation</string>
+    <string name="close_navigation">Close Navigation</string>
+</resources>
+
+
+style.xml *******
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+</resources>
+
+style.xml(v21) **********
+
+ <?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+</resources>
+
+
+menu_item.xml************
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/message"
+            android:icon="@drawable/message"
+            android:title="Message" />
+        <item
+            android:id="@+id/mail"
+            android:icon="@drawable/ic_mail_black_24dp"
+            android:title="Mail" />
+        <item
+            android:id="@+id/person"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profile" />
+
+    </group>
+
+    <item android:title="Communication">
+
+        <menu>
+            <item
+                android:id="@+id/send"
+                android:icon="@drawable/ic_send_black_24dp"
+                android:title="Send" />
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/ic_share_black_24dp"
+                android:title="Share" />
+        </menu>
+
+    </item>
+
+</menu>
+
+
+
+manifest.xml *********
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sajibpal.navigationdrawer">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+
+build.girdle(mobile app)   **********
+
+   compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
